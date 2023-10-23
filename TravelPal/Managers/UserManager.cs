@@ -26,8 +26,17 @@ namespace TravelPal.Managers
             return true;
         }
 
-        private static bool ValidateUsername(string username)
+        //Returnerar false om användarnamnet är upptaget.
+        //Gjorde om till public för att kunna validera redan när det skrivs in så man får feedback direkt istället för när man klickar på "Register"
+        public static bool ValidateUsername(string username)
         {
+            foreach (var user in Users)
+            {
+                if (user.Username == username)
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
