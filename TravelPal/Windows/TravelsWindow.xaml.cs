@@ -22,11 +22,15 @@ namespace TravelPal.Windows
         {
             lblWelcome.Content = $"Welcome {UserManager.SignedInUser.Username}!";
 
+            lstUserTravels.Items.Clear();
+            lstAdminTravels.Items.Clear();
+
             //Admin loggar in
 
             if (UserManager.SignedInUser.GetType() == typeof(Admin))
             {
                 lstAdminTravels.Visibility = Visibility.Visible;
+
                 foreach (Travel travel in TravelManager.Travels)
                 {
                     ListViewItem item = new();
@@ -45,6 +49,8 @@ namespace TravelPal.Windows
                         lstAdminTravels.Items.Add(item);
                     }
                 }
+
+                btnUserInfo.IsEnabled = false;
             }
             else
             {
@@ -91,6 +97,31 @@ namespace TravelPal.Windows
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close();
+        }
+
+        private void lstTravels_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnDetails.IsEnabled = true;
+            btnRemove.IsEnabled = true;
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = new();
+            //Väljer rätt lista beroende på userType
+            if (UserManager.SignedInUser.GetType() == typeof(Admin))
+            {
+                selectedItem = (ListViewItem)lstAdminTravels.SelectedItem;
+            }
+            else
+            {
+                selectedItem = (ListViewItem)lstUserTravels.SelectedItem;
+            }
+            Travel selectedTravel = (Travel)selectedItem.Tag;
+            TravelManager.RemoveTravel(selectedTravel);
+            MessageBox.Show("Travel removed");
+
+            UpdateUI();
         }
     }
 }

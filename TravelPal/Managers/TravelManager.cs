@@ -18,7 +18,7 @@ namespace TravelPal.Managers
 
         public static void RemoveTravel(Travel travel)
         {
-
+            Travels.Remove(travel);
         }
 
     }
