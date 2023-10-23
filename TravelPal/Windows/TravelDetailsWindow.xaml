@@ -37,8 +37,8 @@
         <TextBlock Grid.Row="4" Grid.Column="1" Text="Travellers" FontSize="14" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Reason" FontSize="14" VerticalAlignment="Center"/>
         
-        <TextBlock Grid.Row="6" Grid.Column="1" Text="All inclusive" FontSize="14" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="6" Grid.Column="1" Text="Meeting details" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock Name="lblAllInclusive" Grid.Row="6" Grid.Column="1" Text="All inclusive" FontSize="14" VerticalAlignment="Center" Visibility="Hidden"/>
+        <TextBlock Name="lblMeetingDetails" Grid.Row="6" Grid.Column="1" Text="Meeting details" FontSize="14" VerticalAlignment="Center" Visibility="Hidden"/>
         
         <TextBlock Grid.Row="7" Grid.Column="1" Text="Start date" FontSize="14" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="8" Grid.Column="1" Text="End date" FontSize="14" VerticalAlignment="Center"/>
@@ -48,14 +48,14 @@
         <TextBox Name="txtDestination" Grid.Row="2" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
         <ComboBox Name="cbCountry" Grid.Row="3" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" IsEnabled="False"/>
         <TextBox Name="txtTravellers" Grid.Row="4" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
-        <ComboBox Name="cbReason" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12"/>
+        <ComboBox Name="cbReason" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" IsEnabled="false"/>
         
-        <TextBox Name="txtMeetingDetails" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
-        <CheckBox Name="xbAllInclusive" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
+        <TextBox Name="txtMeetingDetails" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12" Visibility="Hidden"/>
+        <CheckBox Name="xbAllInclusive" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12" Visibility="Hidden" IsEnabled="False"/>
         
-        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
-        <DatePicker Name="dateEndDate" Grid.Row="8" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
-        <TextBox Name="txtDaysOfTravelling" Grid.Row="9" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
+        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12" IsEnabled="False"/>
+        <DatePicker Name="dateEndDate" Grid.Row="8" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12" IsEnabled="False"/>
+        <TextBox Name="txtDaysOfTravelling" Grid.Row="9" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12" />
 
         <ListView Name="lstPackingList" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" />
 

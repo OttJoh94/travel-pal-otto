@@ -36,13 +36,26 @@ namespace TravelPal.Windows
 
             if (TravelManager.SelectedTravel.GetType() == typeof(WorkTrip))
             {
-                //Kod Välj Work trip i cbReason
+                WorkTrip workTrip = (WorkTrip)TravelManager.SelectedTravel;
                 //Enable meeting details
+                cbReason.SelectedItem = "Work trip";
+                lblMeetingDetails.Visibility = Visibility.Visible;
+                txtMeetingDetails.Visibility = Visibility.Visible;
+                txtMeetingDetails.Text = workTrip.MeetingDetails;
+
             }
             else
             {
+                Vacation vacation = (Vacation)TravelManager.SelectedTravel;
                 //Välj vacation i cbReason
                 //Enable AllInclusive
+                cbReason.SelectedItem = "Vacation";
+                lblAllInclusive.Visibility = Visibility.Visible;
+                xbAllInclusive.Visibility = Visibility.Visible;
+                if (vacation.AllInclusive)
+                {
+                    xbAllInclusive.IsChecked = true;
+                }
             }
 
 
