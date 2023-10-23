@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravelPal.Models
+﻿namespace TravelPal.Models
 {
-    internal class Enums
+    public enum EuropeanCountry
     {
+        Sverige,
+        Danmark,
+        Tyskland,
+        Italien,
+        Spanien
+    }
+
+    public enum Country
+    {
+        USA,
+        Australien,
+        Kina,
+        Thailand,
+        Egypten,
+        Brasilien,
+        Kanada
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravelPal.Models
+﻿namespace TravelPal.Models
 {
-    internal interface IUser
+    public interface IUser
     {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Country Location { get; set; }
+
+
     }
 }
