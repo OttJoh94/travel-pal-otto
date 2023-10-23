@@ -32,10 +32,10 @@
         <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="20" Width="200"/>
         <PasswordBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="20" Width="200"/>
 
-        <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="Red" />
+        <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed"/>
 
-        <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Content="Register" Height="30" Width="150"/>
-        <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Content="Sign in" Height="30" Width="150"/>
+        <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Content="Register" Height="30" Width="150" Click="btnRegister_Click"/>
+        <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click"/>
 
 
     </Grid>

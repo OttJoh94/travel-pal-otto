@@ -5,7 +5,11 @@ namespace TravelPal.Managers
 {
     public static class UserManager
     {
-        public static List<IUser> Users { get; set; } = new();
+        public static List<IUser> Users { get; set; } = new()
+        {
+            new User("user", "password", Country.Australien),
+            new Admin("admin", "password", Country.Australien)
+        };
         public static IUser? SignedInUser { get; set; }
 
         public static bool AddUser(IUser user)
@@ -27,9 +31,17 @@ namespace TravelPal.Managers
             return true;
         }
 
-        public static bool SigInUser(string username, string password)
+        public static bool SignInUser(string username, string password)
         {
-            return true;
+            foreach (var user in Users)
+            {
+                if (user.Username == username && user.Password == password)
+                {
+                    SignedInUser = user;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
