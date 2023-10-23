@@ -37,5 +37,30 @@ namespace TravelPal
                 warnInvalidUser.Visibility = Visibility.Visible;
             }
         }
+
+        private void txtUsername_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            EnableSignInButton();
+        }
+
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            EnableSignInButton();
+        }
+
+        private void EnableSignInButton()
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password.ToString();
+
+            if (username != "" && password != "")
+            {
+                btnSignIn.IsEnabled = true;
+            }
+            else
+            {
+                btnSignIn.IsEnabled = false;
+            }
+        }
     }
 }
