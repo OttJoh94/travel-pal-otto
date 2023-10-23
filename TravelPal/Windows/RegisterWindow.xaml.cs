@@ -85,6 +85,7 @@ namespace TravelPal.Windows
                 mainWindow.Show();
                 Close();
             }
+            //Inte fått fram för allt valideras innan jag kan klicka på registrera, men för att vara på säkra sidan.
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

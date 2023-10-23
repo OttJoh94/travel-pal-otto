@@ -29,7 +29,7 @@
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Password" FontSize="18" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="5" Grid.Column="1" Text="Country" FontSize="18" VerticalAlignment="Center"/>
 
-        <TextBlock Name="warnUsernameTaken" Grid.Row="2" Grid.Column="2" Text="Username already taken" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnUsernameTaken" Grid.Row="2" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
 
         <TextBox Name="txtUsername" Grid.Row="2" Grid.Column="2" Height="25" Width="160" HorizontalAlignment="Left" TextChanged="txtUsername_TextChanged" VerticalContentAlignment="Center"/>
         <TextBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="160" HorizontalAlignment="Left" Visibility="Hidden" VerticalContentAlignment="Center" TextChanged="txtPassword_TextChanged"/>

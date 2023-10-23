@@ -7,7 +7,7 @@ namespace TravelPal.Models
     {
         public bool AllInclusive { get; set; }
 
-        public Vacation(string destination, Country country, int travellers, List<PackingListItem> packingList, DateTime startDate, DateTime endDate, bool allInclusive) : base(destination, country, travellers, packingList, startDate, endDate)
+        public Vacation(string destination, Country country, int travellers, List<PackingListItem> packingList, User user, DateTime startDate, DateTime endDate, bool allInclusive) : base(destination, country, travellers, packingList, user, startDate, endDate)
         {
             AllInclusive = allInclusive;
         }

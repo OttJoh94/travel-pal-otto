@@ -40,6 +40,11 @@ namespace TravelPal.Managers
                     return false;
                 }
             }
+
+            if (username.Count() < 3)
+            {
+                return false;
+            }
             return true;
         }
 
