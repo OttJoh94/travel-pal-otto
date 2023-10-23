@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Windows"
         mc:Ignorable="d"
-        Title="TravelsWindow" Height="450" Width="800">
+        Title="TravelsWindow" Height="450" Width="600">
     <Grid>
-        <ListView Name="lstTravels"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lblWelcome" Grid.Row="1" Grid.Column="1" Content="Welcome" FontSize="30" Grid.ColumnSpan="2" />
+        <Button Name="btnInfo" Grid.Row="1" Grid.Column="3" Content="i" FontSize="25" Height="30" Width="30" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontFamily="Bodoni MT Black"/>
+
+        <ListView Name="lstTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Destination" Width="80" DisplayMemberBinding="{Binding Destination}"/>
+                    <GridViewColumn Header="Country" Width="80" DisplayMemberBinding="{Binding Country}"/>
+                    <GridViewColumn Header="Travel" Width="80" DisplayMemberBinding="{Binding Travel}"/>
+                    <GridViewColumn Header="Traveldays" Width="80" DisplayMemberBinding="{Binding TravelDays}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+                <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnDetails" Grid.Row="3" Grid.Column="1" Content="Details" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnRemove" Grid.Row="4" Grid.Column="1" Content="Remove" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnUserInfo" Grid.Row="5" Grid.Column="1" Content="User" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnSignOut" Grid.Row="5" Grid.Column="3" Content="Sign Out" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
     </Grid>
 </Window>

@@ -16,5 +16,10 @@ namespace TravelPal.Models
         {
             return base.GetInfo();
         }
+
+        public override object GetLstInfo()
+        {
+            return new { Destination = Destination, Country = Country.ToString(), Travel = "Work trip", TravelDays = TravelDays };
+        }
     }
 }

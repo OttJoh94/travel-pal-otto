@@ -41,5 +41,10 @@ namespace TravelPal.Models
         {
             return $"{Destination}, {Country.ToString()}, {User.Username}, {TravelDays}";
         }
+
+        public virtual object GetLstInfo()
+        {
+            return new { Destination = Destination, Country = Country.ToString(), Travel = "placeholder", TravelDays = TravelDays };
+        }
     }
 }
