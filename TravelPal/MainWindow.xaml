@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="TravelPal" FontFamily="Arial" FontSize="35" FontWeight="ExtraBold" />
+
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" />
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="Password" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" />
+
+        <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="20" Width="200"/>
+        <PasswordBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="20" Width="200"/>
+
+        <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="Red" />
+
+        <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Content="Register" Height="30" Width="150"/>
+        <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Content="Sign in" Height="30" Width="150"/>
+
 
     </Grid>
 </Window>
