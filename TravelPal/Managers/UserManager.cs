@@ -13,8 +13,10 @@ namespace TravelPal.Managers
         };
         public static IUser? SignedInUser { get; set; }
 
+        //Vet inte varför denna måste vara en bool?
         public static bool AddUser(IUser user)
         {
+            Users.Add(user);
             return true;
         }
         public static void RemoveUser(IUser user)

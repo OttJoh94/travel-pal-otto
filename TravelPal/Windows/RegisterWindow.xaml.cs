@@ -63,6 +63,33 @@ namespace TravelPal.Windows
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string username = txtUsername.Text;
+                //TODO: Städa denna, finns på flera ställen
+                string password;
+                if (xbShowPassword.IsChecked == true)
+                {
+                    password = txtPassword.Text;
+                }
+                else
+                {
+                    password = pwPassword.Password.ToString();
+                }
+                Country country = (Country)cbCountry.SelectedItem;
+
+                User newUser = new(username, password, country);
+                UserManager.AddUser(newUser);
+                MessageBox.Show("Registered! You can now log in", "Success");
+                MainWindow mainWindow = new();
+                mainWindow.Show();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 
