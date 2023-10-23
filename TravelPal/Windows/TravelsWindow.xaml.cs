@@ -123,5 +123,25 @@ namespace TravelPal.Windows
 
             UpdateUI();
         }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = new();
+            //Väljer rätt lista beroende på userType
+            if (UserManager.SignedInUser.GetType() == typeof(Admin))
+            {
+                selectedItem = (ListViewItem)lstAdminTravels.SelectedItem;
+            }
+            else
+            {
+                selectedItem = (ListViewItem)lstUserTravels.SelectedItem;
+            }
+            Travel selectedTravel = (Travel)selectedItem.Tag;
+            TravelManager.SelectedTravel = selectedTravel;
+
+            TravelDetailsWindow detailsWindow = new();
+            detailsWindow.Show();
+            Close();
+        }
     }
 }
