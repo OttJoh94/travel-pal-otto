@@ -30,5 +30,10 @@ namespace TravelPal.Models
             int days = startDate.DayOfYear - endDate.DayOfYear;
             return days;
         }
+
+        public virtual string GetInfo()
+        {
+            return "";
+        }
     }
 }
