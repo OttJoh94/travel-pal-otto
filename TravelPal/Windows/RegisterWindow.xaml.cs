@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using TravelPal.Managers;
+using TravelPal.Models;
 
 namespace TravelPal.Windows
 {
@@ -11,7 +13,10 @@ namespace TravelPal.Windows
         public RegisterWindow()
         {
             InitializeComponent();
-            cbCountry.Items.Add("Hej");
+            foreach (Country country in Enum.GetValues(typeof(Country)))
+            {
+                cbCountry.Items.Add(country);
+            }
         }
 
         private void xbShowPassword_Checked(object sender, RoutedEventArgs e)
@@ -35,6 +40,7 @@ namespace TravelPal.Windows
 
         private void txtUsername_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+            //Warns if the username is taken
             string username = txtUsername.Text;
             if (!UserManager.ValidateUsername(username))
             {
@@ -73,7 +79,9 @@ namespace TravelPal.Windows
                 password = pwPassword.Password.ToString();
             }
 
-            if (username != "" && password != "" && cbCountry.SelectedIndex != -1 && warnUsernameTaken.Visibility != Visibility.Visible)
+
+            //Kollar så att allt är ifyllt korrekt för att kunna klicka på register
+            if (username != "" && password != "" && cbCountry.SelectedIndex != -1 && UserManager.ValidateUsername(username) && UserManager.ValidatePassword(password))
             {
                 btnRegister.IsEnabled = true;
             }
@@ -86,16 +94,40 @@ namespace TravelPal.Windows
         private void txtPassword_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             EnableRegisterButton();
+            WarnPassword();
         }
 
         private void pwPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             EnableRegisterButton();
+            WarnPassword();
         }
 
         private void cbCountry_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             EnableRegisterButton();
+        }
+
+        private void WarnPassword()
+        {
+            string password;
+            if (xbShowPassword.IsChecked == true)
+            {
+                password = txtPassword.Text;
+            }
+            else
+            {
+                password = pwPassword.Password.ToString();
+            }
+
+            if (!UserManager.ValidatePassword(password))
+            {
+                warnPassword.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                warnPassword.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TravelPal.Models;
 
 namespace TravelPal.Managers
@@ -7,8 +8,8 @@ namespace TravelPal.Managers
     {
         public static List<IUser> Users { get; set; } = new()
         {
-            new User("user", "password", Country.Australien),
-            new Admin("admin", "password", Country.Australien)
+            new User("user", "password", Country.Sweden),
+            new Admin("admin", "password", Country.Sweden)
         };
         public static IUser? SignedInUser { get; set; }
 
@@ -51,6 +52,12 @@ namespace TravelPal.Managers
                 }
             }
             return false;
+        }
+
+        //Returnerar true om password är minst 5 characters.
+        public static bool ValidatePassword(string password)
+        {
+            return password.Count() > 4;
         }
     }
 }

@@ -2,21 +2,26 @@
 {
     public enum EuropeanCountry
     {
-        Sverige,
-        Danmark,
-        Tyskland,
-        Italien,
-        Spanien
+        Denmark,
+        Germany,
+        Italy,
+        Spain,
+        Sweden,
     }
 
     public enum Country
     {
-        USA,
-        Australien,
-        Kina,
+        Australia,
+        Brazil,
+        Canada,
+        China,
+        Denmark,
+        Egypt,
+        Germany,
+        Italy,
+        Spain,
+        Sweden,
         Thailand,
-        Egypten,
-        Brasilien,
-        Kanada
+        USA
     }
 }
