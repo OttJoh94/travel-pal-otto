@@ -19,7 +19,7 @@ namespace TravelPal.Models
 
         public override object GetLstInfo()
         {
-            return new { Destination = Destination, Country = Country.ToString(), Travel = "Vacation", TravelDays = TravelDays };
+            return new { Destination = Destination, Country = Country.ToString(), Travel = "Vacation", TravelDays = TravelDays, Username = User.Username };
         }
     }
 }

@@ -27,7 +27,7 @@
         <Label Name="lblWelcome" Grid.Row="1" Grid.Column="1" Content="Welcome" FontSize="30" Grid.ColumnSpan="2" />
         <Button Name="btnInfo" Grid.Row="1" Grid.Column="3" Content="i" FontSize="25" Height="30" Width="30" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontFamily="Bodoni MT Black"/>
 
-        <ListView Name="lstTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
+        <ListView Name="lstUserTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Destination" Width="80" DisplayMemberBinding="{Binding Destination}"/>
@@ -37,11 +37,23 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <ListView Name="lstAdminTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Destination" Width="80" DisplayMemberBinding="{Binding Destination}"/>
+                    <GridViewColumn Header="Country" Width="70" DisplayMemberBinding="{Binding Country}"/>
+                    <GridViewColumn Header="Travel" Width="70" DisplayMemberBinding="{Binding Travel}"/>
+                    <GridViewColumn Header="Traveldays" Width="60" DisplayMemberBinding="{Binding TravelDays}"/>
+                    <GridViewColumn Header="Username" Width="80" DisplayMemberBinding="{Binding Username}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
-                <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+
+        <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
         <Button Name="btnDetails" Grid.Row="3" Grid.Column="1" Content="Details" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
         <Button Name="btnRemove" Grid.Row="4" Grid.Column="1" Content="Remove" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
         <Button Name="btnUserInfo" Grid.Row="5" Grid.Column="1" Content="User" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
-        <Button Name="btnSignOut" Grid.Row="5" Grid.Column="3" Content="Sign Out" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnSignOut" Grid.Row="5" Grid.Column="3" Content="Sign Out" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnSignOut_Click"/>
     </Grid>
 </Window>
