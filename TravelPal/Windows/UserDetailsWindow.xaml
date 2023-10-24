@@ -1,0 +1,55 @@
+﻿<Window x:Class="TravelPal.Windows.UserDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal.Windows"
+        mc:Ignorable="d"
+        Title="UserDetailsWindow" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="1" Content="Manage account" FontSize="30"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+        <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="New password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="Confirm password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+        
+        <PasswordBox Name="pwNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="NewPassword_PasswordChanged"/>
+        <TextBox Name="txtNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="NewPassword_PasswordChanged"/>
+        
+        <PasswordBox Name="pwConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="ConfirmPassword_PasswordChanged"/>
+        <TextBox Name="txtConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="ConfirmPassword_PasswordChanged"/>
+
+        <CheckBox Name="xbShowPassword" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Content="Show password" Margin="0 3 20 0" Checked="xbShowPassword_Checked" Unchecked="xbShowPassword_Unchecked"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="Country" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+        <ComboBox Name="cbCountry" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" />
+
+        <Button Name="btnSave" Grid.Row="8" Grid.Column="1" Height="30" Width="100" Content="Save" FontSize="16" HorizontalAlignment="Left" Click="btnSave_Click"/>
+        <Button Name="btnCancel" Grid.Row="8" Grid.Column="2" Height="30" Width="100" Content="Cancel" FontSize="16" HorizontalAlignment="Right" Click="btnCancel_Click"/>
+
+        <TextBlock Name="warnUsernameTaken" Grid.Row="3" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 5 5 0" Foreground="Red" Visibility="Hidden" />
+        <TextBlock Name="warnPasswordShort" Grid.Row="5" Grid.Column="1" Text="Password too short" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnPasswordNotMatching" Grid.Row="5" Grid.Column="2" Text="Passwords don't match" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+
+    </Grid>
+</Window>

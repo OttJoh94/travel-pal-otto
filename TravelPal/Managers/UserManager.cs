@@ -26,7 +26,22 @@ namespace TravelPal.Managers
 
         public static bool UpdateUsername(IUser user, string username)
         {
-            return true;
+            if (ValidateUsername(username))
+            {
+                user.Username = username;
+                return true;
+            }
+            return false;
+        }
+
+        public static bool UpdatePassword(IUser user, string password)
+        {
+            if (ValidatePassword(password))
+            {
+                user.Password = password;
+                return true;
+            }
+            return false;
         }
 
         //Returnerar false om användarnamnet är upptaget.
