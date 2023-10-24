@@ -143,5 +143,10 @@ namespace TravelPal.Windows
             detailsWindow.Show();
             Close();
         }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(" 'Add travel' to add a new travel to your list\n 'Details' to show details of a selected travel \n 'Remove' to remove a travel \n 'User' to manage your account \n 'Sign out' to sign out", "Info");
+        }
     }
 }
