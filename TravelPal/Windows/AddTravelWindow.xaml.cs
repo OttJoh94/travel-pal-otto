@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using TravelPal.Managers;
 using TravelPal.Models;
 
 namespace TravelPal.Windows
@@ -15,6 +16,8 @@ namespace TravelPal.Windows
 
         private List<PackingListItem> _packingList = new();
         private string _purpose;
+        private bool startDateSelected = false;
+        private bool endDateSelected = false;
 
         public AddTravelWindow()
         {
@@ -168,6 +171,49 @@ namespace TravelPal.Windows
             UpdatePackListUI();
 
             btnRemoveItem.IsEnabled = false;
+        }
+
+        private void dateStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            startDateSelected = true;
+        }
+
+        private void dateEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            endDateSelected = true;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Kolla så alla inputs stämmer
+
+            string destination = txtDestination.Text;
+            Country country = (Country)cbCountry.SelectedItem;
+            int travellers = (int)cbTravellers.SelectedItem;
+            string meetingDetails = txtMeetingDetails.Text;
+            bool allInclusive = false;
+            if (xbAllinclusive.IsChecked == true)
+            {
+                allInclusive = true;
+            }
+            DateTime startDate = (DateTime)dateStartDate.SelectedDate!;
+            DateTime endDate = (DateTime)dateEndDate.SelectedDate!;
+
+            if (_purpose == "Work trip")
+            {
+                WorkTrip workTrip = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, meetingDetails);
+                TravelManager.Travels.Add(workTrip);
+            }
+            else if (_purpose == "Vacation")
+            {
+                Vacation vacation = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, allInclusive);
+                TravelManager.Travels.Add(vacation);
+            }
+
+            MessageBox.Show("Travel added successfully!");
+            TravelsWindow travels = new();
+            travels.Show();
+            Close();
         }
     }
 }

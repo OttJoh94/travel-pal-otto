@@ -10,7 +10,7 @@ namespace TravelPal.Models
         public Country Country { get; set; }
         public int Travellers { get; set; }
         public List<PackingListItem>? PackingList { get; set; }
-        public User? User { get; set; }
+        public IUser? User { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
@@ -19,7 +19,7 @@ namespace TravelPal.Models
         {
 
         }
-        public Travel(string destination, Country country, int travellers, List<PackingListItem> packingList, User user, DateTime startDate, DateTime endDate)
+        public Travel(string destination, Country country, int travellers, List<PackingListItem> packingList, IUser user, DateTime startDate, DateTime endDate)
         {
             Destination = destination;
             Country = country;

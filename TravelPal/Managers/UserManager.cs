@@ -11,7 +11,7 @@ namespace TravelPal.Managers
             new User("user", "password", Country.Sweden),
             new Admin("admin", "password", Country.Sweden)
         };
-        public static IUser? SignedInUser { get; set; }
+        public static IUser? SignedInUser { get; set; } = new User("Otto", "password", Country.Sweden);
 
         //Vet inte varför denna måste vara en bool?
         public static bool AddUser(IUser user)

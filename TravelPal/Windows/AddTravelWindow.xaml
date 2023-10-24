@@ -55,15 +55,15 @@
         <TextBlock Name="lblQuantity" Grid.Row="6" Grid.Column="5" Text="Quantity" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
         <TextBlock Name="lblRequired" Grid.Row="6" Grid.Column="5" Text="Required" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden"/>
 
-        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="1" Height="25" Width="120"/>
-        <DatePicker Name="dateEndDate" Grid.Row="7" Grid.Column="2" Height="25" Width="120"/>
+        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="1" Height="25" Width="120" SelectedDateChanged="dateStartDate_SelectedDateChanged"/>
+        <DatePicker Name="dateEndDate" Grid.Row="7" Grid.Column="2" Height="25" Width="120" SelectedDateChanged="dateEndDate_SelectedDateChanged"/>
         <TextBox Name="txtItemName" Grid.Row="7" Grid.Column="4" Height="25" Width="120"/>
         <ComboBox Name="cbQuantity" Grid.Row="7" Grid.Column="5" Height="25" Width="40"/>
         <CheckBox Name="xbRequired" Grid.Row="7" Grid.Column="5" VerticalAlignment="Center" Content="Required" Visibility="Hidden"/>
 
         <CheckBox Name="xbTravelDocument" Grid.Row="8" Grid.Column="4" VerticalAlignment="Top" Content="Travel Document" Margin="15 0 0 0" Checked="xbTravelDocument_Checked" Unchecked="xbTravelDocument_Unchecked"/>
 
-        <Button Name="btnSave" Grid.Row="9" Grid.Column="1" Height="25" Width="120" Content="Save" FontSize="16"/>
+        <Button Name="btnSave" Grid.Row="9" Grid.Column="1" Height="25" Width="120" Content="Save" FontSize="16" Click="btnSave_Click"/>
         <Button Name="btnCancel" Grid.Row="9" Grid.Column="2" Height="25" Width="120" Content="Cancel" FontSize="16" Click="btnCancel_Click"/>
         <Button Name="btnAddItem" Grid.Row="9" Grid.Column="4" Height="25" Width="120" Content="Add item" FontSize="16" Click="btnAddItem_Click"/>
         <Button Name="btnRemoveItem" Grid.Row="9" Grid.Column="5" Height="25" Width="120" Content="Remove item" FontSize="16" IsEnabled="False" Click="btnRemoveItem_Click"/>
