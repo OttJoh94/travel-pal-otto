@@ -86,6 +86,7 @@ namespace TravelPal.Windows
         {
             CheckPasswordMatch();
         }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string newUsername = txtUsername.Text;
