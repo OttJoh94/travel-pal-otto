@@ -14,6 +14,7 @@ namespace TravelPal.Windows
         public UserDetailsWindow()
         {
             InitializeComponent();
+
             _currentUser = (User)UserManager.SignedInUser;
 
             foreach (Country country in Enum.GetValues(typeof(Country)))
@@ -61,11 +62,36 @@ namespace TravelPal.Windows
             Close();
         }
 
+
+        private void NewPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            CheckPasswordMatch();
+        }
+
+        private bool CheckPasswordMatch()
+        {
+            if (pwNewPassword.Password.ToString() != pwConfirmPassword.Password.ToString() || txtNewPassword.Text != txtConfirmPassword.Text)
+            {
+                warnPasswordNotMatching.Visibility = Visibility.Visible;
+                return false;
+            }
+            else
+            {
+                warnPasswordNotMatching.Visibility = Visibility.Hidden;
+                return true;
+            }
+        }
+
+        private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            CheckPasswordMatch();
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string newUsername = txtUsername.Text;
             string newPassword;
             Country newLocation = (Country)cbCountry.SelectedItem;
+
             //Get the correct password
             if (xbShowPassword.IsChecked == true)
             {
@@ -102,6 +128,7 @@ namespace TravelPal.Windows
                 passwordUpdated = true;
                 warnPasswordShort.Visibility = Visibility.Hidden;
             }
+            //Make warning visible if we have an input that doesn't work
             else if (newPassword != "" && !UserManager.UpdatePassword(_currentUser, newPassword))
             {
                 warnPasswordShort.Visibility = Visibility.Visible;
@@ -148,30 +175,6 @@ namespace TravelPal.Windows
                 MessageBox.Show("Location updated!");
             }
 
-        }
-
-        private void NewPassword_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            CheckPasswordMatch();
-        }
-
-        private bool CheckPasswordMatch()
-        {
-            if (pwNewPassword.Password.ToString() != pwConfirmPassword.Password.ToString() || txtNewPassword.Text != txtConfirmPassword.Text)
-            {
-                warnPasswordNotMatching.Visibility = Visibility.Visible;
-                return false;
-            }
-            else
-            {
-                warnPasswordNotMatching.Visibility = Visibility.Hidden;
-                return true;
-            }
-        }
-
-        private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            CheckPasswordMatch();
         }
     }
 }
