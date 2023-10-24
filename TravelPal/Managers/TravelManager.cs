@@ -9,8 +9,8 @@ namespace TravelPal.Managers
         public static Travel SelectedTravel { get; set; }
         public static List<Travel> Travels { get; set; } = new()
         {
-            new Vacation("Sydney", Country.Australia, 4, new List<PackingListItem>(), (User)UserManager.Users.Find(User => User.Username == "user")!, new System.DateTime(2023, 06, 05), new System.DateTime(2023, 06, 12), true),
-            new WorkTrip("Berlin", Country.Germany, 2, new List<PackingListItem>(), (User)UserManager.Users.Find(User => User.Username == "user")!, new System.DateTime(2023, 06, 01), new System.DateTime(2023, 06, 15), "Gotta do stuff"),
+            new Vacation("Sydney", Country.Australia, 4, new List<PackingListItem>() {new TravelDocument("Passport", true), new OtherItem("Candy", 20)}, (User)UserManager.Users.Find(User => User.Username == "user")!, new System.DateTime(2023, 06, 05), new System.DateTime(2023, 06, 12), true),
+            new WorkTrip("Berlin", Country.Germany, 2, new List<PackingListItem>() {new TravelDocument("Passport", false), new OtherItem("Socks", 4)}, (User)UserManager.Users.Find(User => User.Username == "user")!, new System.DateTime(2023, 06, 01), new System.DateTime(2023, 06, 15), "Gotta do stuff"),
         };
 
         public static void AddTravel(Travel travel)
