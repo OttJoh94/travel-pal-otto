@@ -187,33 +187,82 @@ namespace TravelPal.Windows
         {
             //TODO: Kolla så alla inputs stämmer
 
-            string destination = txtDestination.Text;
-            Country country = (Country)cbCountry.SelectedItem;
-            int travellers = (int)cbTravellers.SelectedItem;
-            string meetingDetails = txtMeetingDetails.Text;
-            bool allInclusive = false;
-            if (xbAllinclusive.IsChecked == true)
+            if (txtDestination.Text == "" || cbCountry.SelectedItem == null || cbTravellers.SelectedItem == null || cbPurpose.SelectedItem == null || !startDateSelected || !endDateSelected)
             {
-                allInclusive = true;
+                TurnOffAllWarnings();
+                //Visa var det saknas
+                if (txtDestination.Text == "")
+                {
+                    warnDestination.Visibility = Visibility.Visible;
+                }
+                if (cbCountry.SelectedItem == null)
+                {
+                    warnCountry.Visibility = Visibility.Visible;
+                }
+                if (cbTravellers.SelectedItem == null)
+                {
+                    warnTravellers.Visibility = Visibility.Visible;
+                }
+                if (cbPurpose.SelectedItem == null)
+                {
+                    warnPurpose.Visibility = Visibility.Visible;
+                }
+                if (!startDateSelected)
+                {
+                    warnStartDate.Visibility = Visibility.Visible;
+                }
+                if (!endDateSelected)
+                {
+                    warnEndDate.Visibility = Visibility.Visible;
+                }
+                return;
             }
-            DateTime startDate = (DateTime)dateStartDate.SelectedDate!;
-            DateTime endDate = (DateTime)dateEndDate.SelectedDate!;
 
-            if (_purpose == "Work trip")
+            try
             {
-                WorkTrip workTrip = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, meetingDetails);
-                TravelManager.Travels.Add(workTrip);
+                string destination = txtDestination.Text;
+                Country country = (Country)cbCountry.SelectedItem;
+                int travellers = (int)cbTravellers.SelectedItem;
+                string meetingDetails = txtMeetingDetails.Text;
+                bool allInclusive = false;
+                if (xbAllinclusive.IsChecked == true)
+                {
+                    allInclusive = true;
+                }
+                DateTime startDate = (DateTime)dateStartDate.SelectedDate!;
+                DateTime endDate = (DateTime)dateEndDate.SelectedDate!;
+
+                if (_purpose == "Work trip")
+                {
+                    WorkTrip workTrip = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, meetingDetails);
+                    TravelManager.Travels.Add(workTrip);
+                }
+                else if (_purpose == "Vacation")
+                {
+                    Vacation vacation = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, allInclusive);
+                    TravelManager.Travels.Add(vacation);
+                }
+
+                MessageBox.Show("Travel added successfully!");
+                TravelsWindow travels = new();
+                travels.Show();
+                Close();
             }
-            else if (_purpose == "Vacation")
+            catch (Exception ex)
             {
-                Vacation vacation = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, allInclusive);
-                TravelManager.Travels.Add(vacation);
+                MessageBox.Show(ex.Message);
             }
 
-            MessageBox.Show("Travel added successfully!");
-            TravelsWindow travels = new();
-            travels.Show();
-            Close();
+        }
+
+        private void TurnOffAllWarnings()
+        {
+            warnDestination.Visibility = Visibility.Hidden;
+            warnCountry.Visibility = Visibility.Hidden;
+            warnTravellers.Visibility = Visibility.Hidden;
+            warnPurpose.Visibility = Visibility.Hidden;
+            warnStartDate.Visibility = Visibility.Hidden;
+            warnEndDate.Visibility = Visibility.Hidden;
         }
     }
 }

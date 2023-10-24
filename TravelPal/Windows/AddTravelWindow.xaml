@@ -69,5 +69,12 @@
         <Button Name="btnRemoveItem" Grid.Row="9" Grid.Column="5" Height="25" Width="120" Content="Remove item" FontSize="16" IsEnabled="False" Click="btnRemoveItem_Click"/>
 
         <ListView Name="lstPackingList" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3" SelectionChanged="lstPackingList_SelectionChanged"/>
+
+        <TextBlock Name="warnDestination" Grid.Row="4" Grid.Column="1" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnCountry" Grid.Row="4" Grid.Column="2" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnTravellers" Grid.Row="4" Grid.Column="3" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnPurpose" Grid.Row="6" Grid.Column="1" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnStartDate" Grid.Row="8" Grid.Column="1" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
+        <TextBlock Name="warnEndDate" Grid.Row="8" Grid.Column="2" Text="Missing" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="Red" Visibility="Hidden"/>
     </Grid>
 </Window>
