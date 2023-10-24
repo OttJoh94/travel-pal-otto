@@ -14,12 +14,21 @@ namespace TravelPal.Managers
 
         public static void AddTravel(Travel travel)
         {
-
+            Travels.Add(travel);
         }
 
         public static void RemoveTravel(Travel travel)
         {
             Travels.Remove(travel);
+        }
+
+        public static void UpdateTravel(Travel travel)
+        {
+            Travel selectedTravel = Travels.Find(travel => travel.Destination == SelectedTravel.Destination);
+            Travels.Remove(selectedTravel);
+            AddTravel(travel);
+            SelectedTravel = travel;
+
         }
 
     }
