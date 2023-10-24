@@ -47,7 +47,7 @@
 
         <TextBox Name="txtDestination" Grid.Row="2" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
         <ComboBox Name="cbCountry" Grid.Row="3" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" IsEnabled="False"/>
-        <TextBox Name="txtTravellers" Grid.Row="4" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
+        <ComboBox Name="cbTravellers" Grid.Row="4" Grid.Column="2" Height="25" Width="50" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsEnabled="False" FontSize="12"/>
         <ComboBox Name="cbReason" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" IsEnabled="false" SelectionChanged="cbReason_SelectionChanged"/>
         
         <TextBox Name="txtMeetingDetails" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12" Visibility="Hidden"/>

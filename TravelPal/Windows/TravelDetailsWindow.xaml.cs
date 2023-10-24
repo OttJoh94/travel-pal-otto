@@ -18,7 +18,13 @@ namespace TravelPal.Windows
             cbReason.Items.Add("Work trip");
             cbReason.Items.Add("Vacation");
 
+            for (int i = 1; i <= 10; i++)
+            {
+                cbTravellers.Items.Add(i);
+            }
+
             UpdateUI();
+
 
         }
 
@@ -27,7 +33,7 @@ namespace TravelPal.Windows
             Travel selectedTravel = TravelManager.SelectedTravel;
 
             txtDestination.Text = selectedTravel.Destination;
-            txtTravellers.Text = selectedTravel.Travellers.ToString();
+            cbTravellers.SelectedItem = selectedTravel.Travellers;
             foreach (Country country in Enum.GetValues(typeof(Country)))
             {
                 cbCountry.Items.Add(country);
@@ -39,7 +45,17 @@ namespace TravelPal.Windows
 
             foreach (PackingListItem item in selectedTravel.PackingList)
             {
-                lstPackingList.Items.Add(item);
+                if (item.GetType() == typeof(TravelDocument))
+                {
+                    TravelDocument document = (TravelDocument)item;
+                    lstPackingList.Items.Add(document.GetInfo());
+                }
+                else
+                {
+                    OtherItem otherItem = (OtherItem)item;
+                    lstPackingList.Items.Add(otherItem.GetInfo());
+                }
+
             }
 
             if (selectedTravel.GetType() == typeof(WorkTrip))
@@ -90,7 +106,7 @@ namespace TravelPal.Windows
             //Gör så man kan ändra i rutorna
             txtDestination.IsReadOnly = false;
             cbCountry.IsEnabled = true;
-            txtTravellers.IsReadOnly = false;
+            cbTravellers.IsEnabled = true;
             cbReason.IsEnabled = true;
             txtMeetingDetails.IsReadOnly = false;
             xbAllInclusive.IsEnabled = true;
@@ -105,7 +121,7 @@ namespace TravelPal.Windows
 
             txtDestination.IsReadOnly = true;
             cbCountry.IsEnabled = false;
-            txtTravellers.IsReadOnly = true;
+            cbTravellers.IsEnabled = false;
             cbReason.IsEnabled = false;
             txtMeetingDetails.IsReadOnly = true;
             xbAllInclusive.IsEnabled = false;
@@ -118,11 +134,12 @@ namespace TravelPal.Windows
 
             string destination = txtDestination.Text;
             Country country = (Country)cbCountry.SelectedItem;
-            int.TryParse(txtTravellers.Text, out int travellers);
+            int travellers = (int)cbTravellers.SelectedItem;
             DateTime startDate = (DateTime)dateStartDate.SelectedDate;
             DateTime endDate = (DateTime)dateEndDate.SelectedDate;
 
-            if (destination == "" || travellers == 0 || country == null || startDate == null || endDate == null)
+            //nullCheck
+            if (destination == "" || travellers == null || country == null || startDate == null || endDate == null)
             {
                 MessageBox.Show("Invalid info, check inputs", "Warning");
                 return;
