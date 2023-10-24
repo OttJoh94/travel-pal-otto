@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using TravelPal.Managers;
@@ -263,6 +264,30 @@ namespace TravelPal.Windows
             warnPurpose.Visibility = Visibility.Hidden;
             warnStartDate.Visibility = Visibility.Hidden;
             warnEndDate.Visibility = Visibility.Hidden;
+        }
+
+        private void cbCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Remove previous passport
+            PackingListItem? previousPassport = _packingList.FirstOrDefault(item => item.Name == "Passport");
+            if (previousPassport != null)
+            {
+                _packingList.Remove(previousPassport);
+            }
+
+
+            if (TravelManager.PassportRequired(UserManager.SignedInUser, (Country)cbCountry.SelectedItem))
+            {
+                TravelDocument travelDocument = new("Passport", true);
+                _packingList.Add(travelDocument);
+            }
+            else
+            {
+                TravelDocument travelDocument = new("Passport", false);
+                _packingList.Add(travelDocument);
+            }
+
+            UpdatePackListUI();
         }
     }
 }

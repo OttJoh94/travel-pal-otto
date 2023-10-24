@@ -18,7 +18,7 @@
                 return $"{Name} - Travel document - Required";
             }
 
-            return $"{Name} - Travel document - not required";
+            return $"{Name} - Travel document - Not required";
         }
     }
 }

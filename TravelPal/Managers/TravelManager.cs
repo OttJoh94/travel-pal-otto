@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TravelPal.Models;
 
 namespace TravelPal.Managers
@@ -31,5 +32,36 @@ namespace TravelPal.Managers
 
         }
 
+        public static bool PassportRequired(IUser user, Country country)
+        {
+            //IF bor utanför EU, pass required
+            if (!IsEuropeanCountry(user.Location))
+            {
+                return true;
+            }
+            //IF bor i EU men reser utanför, pass required
+            else if (!IsEuropeanCountry(country))
+            {
+                return true;
+            }
+            //IF bor i EU och reser inanför, pass inte required
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private static bool IsEuropeanCountry(Country country)
+        {
+            foreach (EuropeanCountry europeanCountry in Enum.GetValues(typeof(EuropeanCountry)))
+            {
+                if (europeanCountry.ToString() == country.ToString())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

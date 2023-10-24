@@ -46,5 +46,7 @@ namespace TravelPal.Models
         {
             return new { Destination = Destination, Country = Country.ToString(), Travel = "placeholder", TravelDays = TravelDays, Username = User.Username };
         }
+
+
     }
 }
