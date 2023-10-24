@@ -53,8 +53,8 @@
         <TextBox Name="txtMeetingDetails" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
         <CheckBox Name="xbAllInclusive" Grid.Row="6" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
         
-        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
-        <DatePicker Name="dateEndDate" Grid.Row="8" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12"/>
+        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12" IsEnabled="False"/>
+        <DatePicker Name="dateEndDate" Grid.Row="8" Grid.Column="2" Height="25" VerticalContentAlignment="Center" FontSize="12" IsEnabled="False"/>
         <TextBox Name="txtDaysOfTravelling" Grid.Row="9" Grid.Column="2" Height="25" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="12"/>
 
         <ListView Name="lstPackingList" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" />
