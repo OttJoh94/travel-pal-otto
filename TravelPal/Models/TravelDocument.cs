@@ -13,7 +13,12 @@
 
         public string GetInfo()
         {
-            return "";
+            if (Required)
+            {
+                return $"{Name} - Travel document - Required";
+            }
+
+            return $"{Name} - Travel document - not required";
         }
     }
 }

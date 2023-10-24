@@ -36,37 +36,38 @@
         <TextBlock Grid.Row="2" Grid.Column="3" Text="Travellers" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
         <TextBlock Grid.Row="2" Grid.Column="4" Text="Packing list" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
 
-        <TextBox Grid.Row="3" Grid.Column="1" Height="25" Width="120"/>
-        <ComboBox Grid.Row="3" Grid.Column="2" Height="25" Width="120"/>
-        <ComboBox Grid.Row="3" Grid.Column="3" Height="25" Width="40"/>
+        <TextBox Name="txtDestination" Grid.Row="3" Grid.Column="1" Height="25" Width="120"/>
+        <ComboBox Name="cbCountry" Grid.Row="3" Grid.Column="2" Height="25" Width="120"/>
+        <ComboBox Name="cbTravellers" Grid.Row="3" Grid.Column="3" Height="25" Width="40"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="1" Text="Destination" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
-        <TextBlock Name="lblMeetingDetails" Grid.Row="4" Grid.Column="2" Text="Meeting details" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
-        <TextBlock Name="lblAllInclusive" Grid.Row="4" Grid.Column="2" Text="All inclusive" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Purpose" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
+        <TextBlock Name="lblMeetingDetails" Grid.Row="4" Grid.Column="2" Text="Meeting details" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden"/>
+        <TextBlock Name="lblAllInclusive" Grid.Row="4" Grid.Column="2" Text="All inclusive" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden"/>
 
-        <ComboBox Grid.Row="5" Grid.Column="1" Height="25" Width="120"/>
-        <TextBox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="25" Width="200" HorizontalAlignment="Left" Margin="18 0 0 0"/>
-        <CheckBox Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" Content="All inclusive"/>
+        <ComboBox Name="cbPurpose" Grid.Row="5" Grid.Column="1" Height="25" Width="120" SelectionChanged="cbPurpose_SelectionChanged"/>
+        <TextBox Name="txtMeetingDetails" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="25" Width="200" HorizontalAlignment="Left" Margin="18 0 0 0" Visibility="Hidden"/>
+        <CheckBox Name="xbAllinclusive" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" Content="All inclusive" Margin="18 0 0 0" Visibility="Hidden"/>
 
 
         <TextBlock Grid.Row="6" Grid.Column="1" Text="Start date" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
         <TextBlock Grid.Row="6" Grid.Column="2" Text="End date" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
-        <TextBlock Grid.Row="6" Grid.Column="4" Text="Description" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="Item name" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
         <TextBlock Name="lblQuantity" Grid.Row="6" Grid.Column="5" Text="Quantity" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
-        <TextBlock Name="lblRequired" Grid.Row="6" Grid.Column="5" Text="Required" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14"/>
+        <TextBlock Name="lblRequired" Grid.Row="6" Grid.Column="5" Text="Required" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden"/>
 
-        <DatePicker Grid.Row="7" Grid.Column="1" Height="25" Width="120"/>
-        <DatePicker Grid.Row="7" Grid.Column="2" Height="25" Width="120"/>
-        <TextBox Grid.Row="7" Grid.Column="4" Height="25" Width="120"/>
-        <ComboBox Grid.Row="7" Grid.Column="5" Height="25" Width="40"/>
-        <CheckBox Grid.Row="7" Grid.Column="5" VerticalAlignment="Center" Content="Required"/>
+        <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="1" Height="25" Width="120"/>
+        <DatePicker Name="dateEndDate" Grid.Row="7" Grid.Column="2" Height="25" Width="120"/>
+        <TextBox Name="txtItemName" Grid.Row="7" Grid.Column="4" Height="25" Width="120"/>
+        <ComboBox Name="cbQuantity" Grid.Row="7" Grid.Column="5" Height="25" Width="40"/>
+        <CheckBox Name="xbRequired" Grid.Row="7" Grid.Column="5" VerticalAlignment="Center" Content="Required" Visibility="Hidden"/>
 
-        <CheckBox Grid.Row="8" Grid.Column="4" VerticalAlignment="Top" Content="Travel Document" Margin="15 0 0 0"/>
+        <CheckBox Name="xbTravelDocument" Grid.Row="8" Grid.Column="4" VerticalAlignment="Top" Content="Travel Document" Margin="15 0 0 0" Checked="xbTravelDocument_Checked" Unchecked="xbTravelDocument_Unchecked"/>
 
-        <Button Grid.Row="9" Grid.Column="1" Height="25" Width="120" Content="Save" FontSize="16"/>
-        <Button Grid.Row="9" Grid.Column="2" Height="25" Width="120" Content="Cancel" FontSize="16"/>
-        <Button Grid.Row="9" Grid.Column="4" Height="25" Width="120" Content="Add item" FontSize="16"/>
+        <Button Name="btnSave" Grid.Row="9" Grid.Column="1" Height="25" Width="120" Content="Save" FontSize="16"/>
+        <Button Name="btnCancel" Grid.Row="9" Grid.Column="2" Height="25" Width="120" Content="Cancel" FontSize="16" Click="btnCancel_Click"/>
+        <Button Name="btnAddItem" Grid.Row="9" Grid.Column="4" Height="25" Width="120" Content="Add item" FontSize="16" Click="btnAddItem_Click"/>
+        <Button Name="btnRemoveItem" Grid.Row="9" Grid.Column="5" Height="25" Width="120" Content="Remove item" FontSize="16" IsEnabled="False" Click="btnRemoveItem_Click"/>
 
-        <ListView Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <ListView Name="lstPackingList" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="3" SelectionChanged="lstPackingList_SelectionChanged"/>
     </Grid>
 </Window>

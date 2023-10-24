@@ -50,7 +50,7 @@
         </ListView>
 
 
-        <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5"/>
+        <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnAddTravel_Click"/>
         <Button Name="btnDetails" Grid.Row="3" Grid.Column="1" Content="Details" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnDetails_Click"/>
         <Button Name="btnRemove" Grid.Row="4" Grid.Column="1" Content="Remove" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnRemove_Click"/>
         <Button Name="btnUserInfo" Grid.Row="5" Grid.Column="1" Content="User" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnUserInfo_Click"/>
