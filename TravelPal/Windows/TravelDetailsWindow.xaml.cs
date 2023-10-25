@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using TravelPal.Managers;
 using TravelPal.Models;
 
@@ -305,6 +306,14 @@ namespace TravelPal.Windows
 
             lblRequired.Visibility = Visibility.Hidden;
             xbRequired.Visibility = Visibility.Hidden;
+        }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

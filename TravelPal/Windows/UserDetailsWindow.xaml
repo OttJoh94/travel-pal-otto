@@ -5,51 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Windows"
         mc:Ignorable="d"
-        Title="UserDetailsWindow" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="15"/>
-            <RowDefinition Height="1.2*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="15"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="15"/>
-        </Grid.ColumnDefinitions>
+        Title="UserDetailsWindow" Height="400" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
 
-        <Label Grid.Row="1" Grid.Column="1" Content="Manage account" FontSize="30"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
-        <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left"/>
+    <Border CornerRadius="21" >
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/travelpal-logo.png" Stretch="Uniform"/>
+        </Border.Background>
 
-        <TextBlock Grid.Row="4" Grid.Column="1" Text="New password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
-        <TextBlock Grid.Row="4" Grid.Column="2" Text="Confirm password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
-        
-        <PasswordBox Name="pwNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="NewPassword_PasswordChanged"/>
-        <TextBox Name="txtNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="NewPassword_PasswordChanged"/>
-        
-        <PasswordBox Name="pwConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="ConfirmPassword_PasswordChanged"/>
-        <TextBox Name="txtConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="ConfirmPassword_PasswordChanged"/>
 
-        <CheckBox Name="xbShowPassword" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Content="Show password" Margin="0 3 20 0" Checked="xbShowPassword_Checked" Unchecked="xbShowPassword_Unchecked"/>
 
-        <TextBlock Grid.Row="6" Grid.Column="1" Text="Country" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
-        <ComboBox Name="cbCountry" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" />
+        <Border CornerRadius="20"
+                BorderThickness="5"
+                Opacity="0.9">
 
-        <Button Name="btnSave" Grid.Row="8" Grid.Column="1" Height="30" Width="100" Content="Save" FontSize="16" HorizontalAlignment="Left" Click="btnSave_Click"/>
-        <Button Name="btnCancel" Grid.Row="8" Grid.Column="2" Height="30" Width="100" Content="Cancel" FontSize="16" HorizontalAlignment="Right" Click="btnCancel_Click"/>
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="LightBlue" Offset="0"/>
+                    <GradientStop Color="DeepPink" Offset="0.85"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
 
-        <TextBlock Name="warnUsernameTaken" Grid.Row="3" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 5 5 0" Foreground="Red" Visibility="Hidden" />
-        <TextBlock Name="warnPasswordShort" Grid.Row="5" Grid.Column="1" Text="Password too short" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
-        <TextBlock Name="warnPasswordNotMatching" Grid.Row="5" Grid.Column="2" Text="Passwords don't match" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#7B68EE" Offset="0"/>
+                    <GradientStop Color="Purple" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
-    </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="1.2*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="1" Grid.Column="1" Content="Manage account" FontSize="30"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+                <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="New password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+                <TextBlock Grid.Row="4" Grid.Column="2" Text="Confirm password" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+
+                <PasswordBox Name="pwNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="NewPassword_PasswordChanged"/>
+                <TextBox Name="txtNewPassword" Grid.Row="5" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="NewPassword_PasswordChanged"/>
+
+                <PasswordBox Name="pwConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" PasswordChanged="ConfirmPassword_PasswordChanged"/>
+                <TextBox Name="txtConfirmPassword" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Visibility="Hidden" TextChanged="ConfirmPassword_PasswordChanged"/>
+
+                <CheckBox Name="xbShowPassword" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Content="Show password" Margin="0 3 20 0" Checked="xbShowPassword_Checked" Unchecked="xbShowPassword_Unchecked"/>
+
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="Country" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14"/>
+                <ComboBox Name="cbCountry" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" />
+
+                <Button Name="btnSave" Grid.Row="8" Grid.Column="1" Height="30" Width="100" Content="Save" FontSize="16" HorizontalAlignment="Left" Click="btnSave_Click"/>
+                <Button Name="btnCancel" Grid.Row="8" Grid.Column="2" Height="30" Width="100" Content="Cancel" FontSize="16" HorizontalAlignment="Right" Click="btnCancel_Click"/>
+
+                <TextBlock Name="warnUsernameTaken" Grid.Row="3" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 5 5 0" Foreground="Red" Visibility="Hidden" />
+                <TextBlock Name="warnPasswordShort" Grid.Row="5" Grid.Column="1" Text="Password too short" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+                <TextBlock Name="warnPasswordNotMatching" Grid.Row="5" Grid.Column="2" Text="Passwords don't match" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+
+            </Grid>
+
+        </Border>
+    </Border>
+    
 </Window>
