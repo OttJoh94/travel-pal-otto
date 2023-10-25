@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using TravelPal.Managers;
 using TravelPal.Windows;
 
@@ -60,6 +61,14 @@ namespace TravelPal
             else
             {
                 btnSignIn.IsEnabled = false;
+            }
+        }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
             }
         }
     }
