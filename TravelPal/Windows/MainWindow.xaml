@@ -7,67 +7,72 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
 
-    <Border CornerRadius="21" >
+    <Border CornerRadius="22">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/travelpal-logo.png" Stretch="Uniform"/>
+            <SolidColorBrush Color="Black"/>
         </Border.Background>
-        
-        
 
-        <Border CornerRadius="20"
+        <Border CornerRadius="21" >
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/travelpal-logo.png" Stretch="Uniform"/>
+            </Border.Background>
+
+
+
+            <Border CornerRadius="20"
                 BorderThickness="5"
                 Opacity="0.9">
 
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="LightBlue" Offset="0"/>
-                    <GradientStop Color="DeepPink" Offset="0.85"/>
-                    <GradientStop Color="Purple" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightBlue" Offset="0"/>
+                        <GradientStop Color="DeepPink" Offset="0.85"/>
+                        <GradientStop Color="Purple" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
 
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#7B68EE" Offset="0"/>
-                    <GradientStop Color="Purple" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="#7B68EE" Offset="0"/>
+                        <GradientStop Color="Purple" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="15"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="15"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="15"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.ColumnSpan="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="15"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="LOG IN"
+                    <Grid Grid.ColumnSpan="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="LOG IN"
                        Foreground="DarkGray"
                        FontSize="10"
                        FontFamily="Montserrat"
                        Grid.Column="0"
                        VerticalAlignment="Center"
                        Margin="10 0 0 0">
-                    </TextBlock>
+                        </TextBlock>
 
-                    <Button Name="btnMinimize"
+                        <Button Name="btnMinimize"
                             BorderThickness="0"
                             Content="-"
                             Foreground="White"
@@ -76,32 +81,32 @@
                             Grid.Column="1"
                             Cursor="Hand"
                             Click="btnMinimize_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#28AEED"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#278BEF"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
                                         CornerRadius="9"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                        <ContentPresenter VerticalAlignment="Center"
                                             HorizontalAlignment="Center">
-                                    </ContentPresenter>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
+                                        </ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
 
-                    </Button>
+                        </Button>
 
-                    <Button Name="btnClose"
+                        <Button Name="btnClose"
                             BorderThickness="0"
                             Content="X"
                             Foreground="White"
@@ -111,48 +116,49 @@
                             Cursor="Hand"
                             Click="btnClose_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#DA34AE"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#C62DAE"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#DA34AE"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#C62DAE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
                                         CornerRadius="9"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                        <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center">
-                                    </ContentPresenter>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                                        </ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+
+
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="TravelPal" FontFamily="Arial" FontSize="35" FontWeight="ExtraBold" Foreground="White" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="20" Foreground="White"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Password" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="20" Foreground="White"/>
+
+                    <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" Width="150" TextChanged="txtUsername_TextChanged"  FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
+                    <PasswordBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="150" PasswordChanged="txtPassword_PasswordChanged" FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
+
+                    <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="GreenYellow" Visibility="Collapsed"/>
+
+                    <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Register" Height="30" Width="150" Click="btnRegister_Click" FontSize="18"/>
+                    <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click" IsEnabled="False" FontSize="18"/>
+
+
                 </Grid>
-                
 
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="TravelPal" FontFamily="Arial" FontSize="35" FontWeight="ExtraBold" Foreground="White" />
-
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="20" Foreground="White"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="Password" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="20" Foreground="White"/>
-
-                <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" Width="150" TextChanged="txtUsername_TextChanged"  FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
-                <PasswordBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="150" PasswordChanged="txtPassword_PasswordChanged" FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
-
-                <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="GreenYellow" Visibility="Collapsed"/>
-
-                <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Register" Height="30" Width="150" Click="btnRegister_Click" FontSize="18"/>
-                <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click" IsEnabled="False" FontSize="18"/>
-
-
-            </Grid>
-
+            </Border>
         </Border>
     </Border>
 

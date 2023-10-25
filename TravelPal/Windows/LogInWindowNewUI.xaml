@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="LogInWindowNewUI" Height="550" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" Background="Transparent" AllowsTransparency="True">
 
+    <Border CornerRadius="20">
+        <Border.Background>
+            <SolidColorBrush Color="Black"/>
+        </Border.Background>
+        
+    
     <Border CornerRadius="21">
         <Border.Background>
             <ImageBrush ImageSource="/Images/travelpal-logo.png" Stretch="None"/>
@@ -125,7 +131,8 @@
 
         </Border>
     </Border>
+    </Border>
 
-    
-    
+
+
 </Window>
