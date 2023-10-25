@@ -145,10 +145,10 @@
                 <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" Width="150" TextChanged="txtUsername_TextChanged"  FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
                 <PasswordBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="150" PasswordChanged="txtPassword_PasswordChanged" FontSize="13" Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray" BorderThickness="0 0 0 1" VerticalContentAlignment="Center" Margin="0 5 0 0" HorizontalContentAlignment="Center"/>
 
-                <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed"/>
+                <TextBlock Name="warnInvalidUser" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Incorrect username or password" HorizontalAlignment="Center" Foreground="GreenYellow" Visibility="Collapsed"/>
 
-                <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Content="Register" Height="30" Width="150" Click="btnRegister_Click" Background="White" FontSize="18"/>
-                <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click" IsEnabled="False" Background="White" FontSize="18"/>
+                <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Register" Height="30" Width="150" Click="btnRegister_Click" FontSize="18"/>
+                <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click" IsEnabled="False" FontSize="18"/>
 
 
             </Grid>

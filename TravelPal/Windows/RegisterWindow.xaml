@@ -36,7 +36,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="15"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="1.2*"/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition Height="20"/>
@@ -51,25 +51,25 @@
                     <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="Register" FontSize="30"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" FontSize="18" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="Password" FontSize="18" VerticalAlignment="Center"/>
-                <TextBlock Grid.Row="5" Grid.Column="1" Text="Country" FontSize="18" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Register" FontSize="30" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" FontSize="18" VerticalAlignment="Center" Foreground="White"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Password" FontSize="18" VerticalAlignment="Center" Foreground="White"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="Country" FontSize="18" VerticalAlignment="Center" Foreground="White"/>
 
-                <TextBlock Name="warnUsernameTaken" Grid.Row="2" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+                <TextBlock Name="warnUsernameTaken" Grid.Row="2" Grid.Column="2" Text="Username taken or too short" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Foreground="GreenYellow" Visibility="Hidden"/>
 
                 <TextBox Name="txtUsername" Grid.Row="2" Grid.Column="2" Height="25" Width="160" HorizontalAlignment="Left" TextChanged="txtUsername_TextChanged" VerticalContentAlignment="Center"/>
                 <TextBox Name="txtPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="160" HorizontalAlignment="Left" Visibility="Hidden" VerticalContentAlignment="Center" TextChanged="txtPassword_TextChanged"/>
                 <PasswordBox Name="pwPassword" Grid.Row="3" Grid.Column="2" Height="25" Width="160" HorizontalAlignment="Left" VerticalContentAlignment="Center" PasswordChanged="pwPassword_PasswordChanged"/>
-                <TextBlock Name="warnPassword" Grid.Row="4" Grid.Column="2" Text="Password must contain atleast 5 characters" FontSize="10" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="Red" Visibility="Hidden"/>
+                <TextBlock Name="warnPassword" Grid.Row="4" Grid.Column="2" Text="Password must contain atleast 5 characters" FontSize="10" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 0 5 0" Foreground="GreenYellow" Visibility="Hidden"/>
 
 
-                <CheckBox Name="xbShowPassword" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Show password" Margin="0 0 25 0" Checked="xbShowPassword_Checked" Unchecked="xbShowPassword_Unchecked"/>
+                <CheckBox Name="xbShowPassword" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Show password" Margin="0 0 25 0" Checked="xbShowPassword_Checked" Unchecked="xbShowPassword_Unchecked" Foreground="White"/>
 
                 <ComboBox Name="cbCountry" Grid.Row="5" Grid.Column="2" Height="25" Width="150" HorizontalAlignment="Left" SelectionChanged="cbCountry_SelectionChanged"/>
 
-                <Button Name="btnRegister" Grid.Row="6" Grid.Column="1" Content="Register" Height="20" Width="80" Click="btnRegister_Click" IsEnabled="False"/>
-                <Button Name="btnCancel" Grid.Row="6" Grid.Column="2" Content="Cancel" Height="20" Width="80" HorizontalAlignment="Right" Margin="0 0 30 0" Click="btnCancel_Click"/>
+                <Button Name="btnRegister" Grid.Row="6" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" FontSize="16" Content="Register" Height="24" Width="80" Click="btnRegister_Click" IsEnabled="False"/>
+                <Button Name="btnCancel" Grid.Row="6" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" FontSize="16" Content="Cancel" Height="20" Width="80" HorizontalAlignment="Right" Margin="0 0 30 0" Click="btnCancel_Click"/>
 
             </Grid>
 

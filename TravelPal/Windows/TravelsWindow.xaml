@@ -51,7 +51,7 @@
                     <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Name="lblWelcome" Grid.Row="1" Grid.Column="1" Content="Welcome" FontSize="30" Grid.ColumnSpan="2" />
+                <Label Name="lblWelcome" Grid.Row="1" Grid.Column="1" Content="Welcome" FontSize="30" Grid.ColumnSpan="2" Foreground="White" FontWeight="Bold" />
                 <Button Name="btnInfo" Grid.Row="1" Grid.Column="3" Content="?" FontSize="25" Height="30" Width="30" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontFamily="Rockwell" Click="btnInfo_Click"/>
 
                 <ListView Name="lstUserTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="Visible" SelectionChanged="lstTravels_SelectionChanged">
@@ -77,11 +77,11 @@
                 </ListView>
 
 
-                <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnAddTravel_Click"/>
-                <Button Name="btnDetails" Grid.Row="3" Grid.Column="1" Content="Details" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnDetails_Click"/>
-                <Button Name="btnRemove" Grid.Row="4" Grid.Column="1" Content="Remove" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnRemove_Click"/>
-                <Button Name="btnUserInfo" Grid.Row="5" Grid.Column="1" Content="User" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnUserInfo_Click"/>
-                <Button Name="btnSignOut" Grid.Row="5" Grid.Column="3" Content="Sign Out" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnSignOut_Click"/>
+                <Button Name="btnAddTravel" Grid.Row="2" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Add travel" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnAddTravel_Click"/>
+                <Button Name="btnDetails" Grid.Row="3" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Details" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnDetails_Click"/>
+                <Button Name="btnRemove" Grid.Row="4" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Remove" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" IsEnabled="False" Click="btnRemove_Click"/>
+                <Button Name="btnUserInfo" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="User" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnUserInfo_Click"/>
+                <Button Name="btnSignOut" Grid.Row="5" Grid.Column="3" Style="{StaticResource CustomButtonStyle}" Content="Sign Out" FontSize="16" Height="40" Width="120" HorizontalAlignment="Left" Margin="5" Click="btnSignOut_Click"/>
             </Grid>
 
         </Border>
