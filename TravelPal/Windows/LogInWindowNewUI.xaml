@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="LogInWindowNewUI" Height="550" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" Background="Transparent" AllowsTransparency="True">
 
+    <!--Hela det här windowet är bara en slaskWindow för att testa nya UI saker-->
+    
+    
     <Border CornerRadius="20">
         <Border.Background>
             <SolidColorBrush Color="Black"/>

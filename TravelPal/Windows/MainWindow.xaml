@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
 
+    <!--Flera borders för att sätta bakgrunden, är samma på alla fönster-->
     <Border CornerRadius="22">
         <Border.Background>
             <SolidColorBrush Color="Black"/>
@@ -16,8 +17,6 @@
             <Border.Background>
                 <ImageBrush ImageSource="/Images/travelpal-logo.png" Stretch="Uniform"/>
             </Border.Background>
-
-
 
             <Border CornerRadius="20"
                 BorderThickness="5"
@@ -38,6 +37,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
+                <!--MainGrid sen tidigare-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
@@ -55,6 +55,9 @@
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Här görs ett nytt grid för bara översta raden för att få in-->
+                    <!--minimeraknappen och stängknappen. Följde en Youtube-video-->
+                    
                     <Grid Grid.ColumnSpan="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -141,7 +144,7 @@
                         </Button>
                     </Grid>
 
-
+                    <!--Här är alla element jag hade med innan jag började jobba med UI-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="TravelPal" FontFamily="Arial" FontSize="35" FontWeight="ExtraBold" Foreground="White" />
 
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="20" Foreground="White"/>
@@ -154,7 +157,6 @@
 
                     <Button Name="btnRegister" Grid.Row="5" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Content="Register" Height="30" Width="150" Click="btnRegister_Click" FontSize="18"/>
                     <Button Name="btnSignIn" Grid.Row="5" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" Content="Sign in" Height="30" Width="150" Click="btnSignIn_Click" IsEnabled="False" FontSize="18"/>
-
 
                 </Grid>
 
