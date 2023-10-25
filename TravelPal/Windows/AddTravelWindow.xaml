@@ -36,6 +36,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
+                <!--MainGrid-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15"/>
@@ -60,6 +61,7 @@
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Elements-->
                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Add Travel" FontSize="25" Foreground="White" FontWeight="Bold"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="Destination" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBlock Grid.Row="2" Grid.Column="2" Text="Country" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>

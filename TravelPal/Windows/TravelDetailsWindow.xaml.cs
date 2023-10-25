@@ -315,5 +315,10 @@ namespace TravelPal.Windows
                 DragMove();
             }
         }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Here you can view details about your travel\nPress 'Edit' to unlock the boxes and edit the info\nDon't forget to save!", "Help");
+        }
     }
 }

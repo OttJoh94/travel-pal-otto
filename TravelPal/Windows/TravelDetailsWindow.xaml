@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Windows"
         mc:Ignorable="d"
-        Title="TravelDetailsWindow" Height="620" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
+        Title="TravelDetailsWindow" Height="500" Width="600" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
 
     <Border CornerRadius="22">
         <Border.Background>
@@ -36,6 +36,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
+                <!--MainGrid-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15"/>
@@ -60,7 +61,9 @@
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Elements-->
                     <Label Grid.Row="1" Grid.Column="1" Content="Details" FontSize="30" Foreground="White" FontWeight="Bold"/>
+                    <Button Name="btnInfo" Grid.Row="1" Grid.Column="4" Style="{StaticResource CustomButtonStyle}" Content="?" FontSize="25" Height="30" Width="30" FontFamily="Rockwell" Click="btnInfo_Click"/>
 
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="Destination" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
                     <TextBlock Grid.Row="3" Grid.Column="1" Text="Country" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
@@ -100,12 +103,12 @@
 
                     <CheckBox Name="xbTravelDocument" Grid.Row="9" Grid.Column="3" VerticalAlignment="Top" Content="Travel Document" Margin="15 0 0 0" Checked="xbTravelDocument_Checked" Unchecked="xbTravelDocument_Unchecked" Foreground="White"/>
 
-                    <Button Name="btnAddItem" Grid.Row="9" Grid.Column="3" Style="{StaticResource CustomButtonStyle}" Height="25" Width="100" VerticalAlignment="Bottom" Content="Add item" Click="btnAddItem_Click" IsEnabled="False" />
-                    <Button Name="btnRemoveItem" Grid.Row="9" Grid.Column="4" Style="{StaticResource CustomButtonStyle}" Height="25" Width="100"  VerticalAlignment="Bottom" Content="Remove item" Click="btnRemoveItem_Click" IsEnabled="False"/>
+                    <Button Name="btnAddItem" Grid.Row="9" Grid.Column="3" Style="{StaticResource CustomButtonStyle}" FontSize="18" Height="25" Width="100" VerticalAlignment="Bottom" Content="Add item" Click="btnAddItem_Click" IsEnabled="False" />
+                    <Button Name="btnRemoveItem" Grid.Row="9" Grid.Column="4" Style="{StaticResource CustomButtonStyle}" FontSize="18" Height="25" Width="120"  VerticalAlignment="Bottom" Content="Remove item" Click="btnRemoveItem_Click" IsEnabled="False"/>
 
-                    <Button Name="btnEdit" Grid.Row="10" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Height="25" Width="100" Content="Edit" Click="btnEdit_Click"/>
-                    <Button Name="btnSave" Grid.Row="10" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" Height="25" Width="100" Content="Save" Visibility="Hidden" Click="btnSave_Click"/>
-                    <Button Name="btnCancel" Grid.Row="10" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" Height="25" Width="100" Content="Back" Click="btnCancel_Click"/>
+                    <Button Name="btnEdit" Grid.Row="10" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" FontSize="18" Height="25" Width="100" Content="Edit" Click="btnEdit_Click"/>
+                    <Button Name="btnSave" Grid.Row="10" Grid.Column="1" Style="{StaticResource CustomButtonStyle}" FontSize="18" Height="25" Width="100" Content="Save" Visibility="Hidden" Click="btnSave_Click"/>
+                    <Button Name="btnCancel" Grid.Row="10" Grid.Column="2" Style="{StaticResource CustomButtonStyle}" FontSize="18" Height="25" Width="100" Content="Back" Click="btnCancel_Click"/>
 
                 </Grid>
 

@@ -36,6 +36,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
+                <!--MainGrid-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15"/>
@@ -56,6 +57,7 @@
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Elements-->
                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="Manage account" FontSize="30" Foreground="White" FontWeight="Bold"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="Username" VerticalAlignment="Bottom" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBox Name="txtUsername" Grid.Row="3" Grid.Column="1" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left"/>

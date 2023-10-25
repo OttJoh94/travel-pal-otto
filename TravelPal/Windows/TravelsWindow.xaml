@@ -36,6 +36,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
 
+                <!--MainGrid-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15"/>
@@ -54,8 +55,9 @@
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Elements-->
                     <Label Name="lblWelcome" Grid.Row="1" Grid.Column="1" Content="Welcome" FontSize="30" Grid.ColumnSpan="2" Foreground="White" FontWeight="Bold" />
-                    <Button Name="btnInfo" Grid.Row="1" Grid.Column="3" Content="?" FontSize="25" Height="30" Width="30" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontFamily="Rockwell" Click="btnInfo_Click"/>
+                    <Button Name="btnInfo" Grid.Row="1" Grid.Column="3" Style="{StaticResource CustomButtonStyle}" Content="?" FontSize="25" Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" FontFamily="Rockwell" Click="btnInfo_Click"/>
 
                     <ListView Name="lstUserTravels" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="Visible" SelectionChanged="lstTravels_SelectionChanged">
                         <ListView.View>
