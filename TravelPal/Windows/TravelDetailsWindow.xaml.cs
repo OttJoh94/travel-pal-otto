@@ -13,6 +13,8 @@ namespace TravelPal.Windows
     public partial class TravelDetailsWindow : Window
     {
         private List<PackingListItem> _packingList = new();
+
+        private bool _isEditing = false;
         public TravelDetailsWindow()
         {
             InitializeComponent();
@@ -23,16 +25,20 @@ namespace TravelPal.Windows
             for (int i = 1; i <= 10; i++)
             {
                 cbTravellers.Items.Add(i);
+                cbQuantity.Items.Add(i);
             }
 
             UpdateUI();
             UpdatePackingList();
+            TurnOffUI();
 
 
         }
 
         private void UpdatePackingList()
         {
+            lstPackingList.Items.Clear();
+
             foreach (PackingListItem item in _packingList)
             {
                 ListViewItem listViewItem = new();
@@ -124,6 +130,12 @@ namespace TravelPal.Windows
             xbAllInclusive.IsEnabled = true;
             dateStartDate.IsEnabled = true;
             dateEndDate.IsEnabled = true;
+            btnAddItem.IsEnabled = true;
+            txtItemName.IsEnabled = true;
+            cbQuantity.IsEnabled = true;
+            xbTravelDocument.IsEnabled = true;
+
+            _isEditing = true;
         }
 
         private void TurnOffUI()
@@ -139,6 +151,13 @@ namespace TravelPal.Windows
             xbAllInclusive.IsEnabled = false;
             dateStartDate.IsEnabled = false;
             dateEndDate.IsEnabled = false;
+            txtDaysOfTravelling.IsReadOnly = true;
+            btnAddItem.IsEnabled = false;
+            txtItemName.IsEnabled = false;
+            cbQuantity.IsEnabled = false;
+            xbTravelDocument.IsEnabled = false;
+
+            _isEditing = false;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -163,7 +182,7 @@ namespace TravelPal.Windows
                 {
 
                     string meetingDetails = txtMeetingDetails.Text;
-                    WorkTrip updatedTravel = new(destination, country, travellers, new List<PackingListItem>(), TravelManager.SelectedTravel.User, startDate, endDate, meetingDetails);
+                    WorkTrip updatedTravel = new(destination, country, travellers, _packingList, TravelManager.SelectedTravel.User, startDate, endDate, meetingDetails);
                     TravelManager.UpdateTravel(updatedTravel);
                 }
                 else if ((string)cbReason.SelectedItem == "Vacation")
@@ -173,7 +192,7 @@ namespace TravelPal.Windows
                     {
                         allInclusive = true;
                     }
-                    Vacation updatedTravel = new(destination, country, travellers, new List<PackingListItem>(), TravelManager.SelectedTravel.User, startDate, endDate, allInclusive);
+                    Vacation updatedTravel = new(destination, country, travellers, _packingList, TravelManager.SelectedTravel.User, startDate, endDate, allInclusive);
                     TravelManager.UpdateTravel(updatedTravel);
 
                 }
@@ -183,6 +202,7 @@ namespace TravelPal.Windows
 
                 UpdateUI();
                 TurnOffUI();
+
             }
             catch (Exception ex)
             {
@@ -209,6 +229,82 @@ namespace TravelPal.Windows
                 txtMeetingDetails.Visibility = Visibility.Hidden;
                 xbAllInclusive.Visibility = Visibility.Visible;
             }
+        }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            string itemName = txtItemName.Text;
+
+            if (xbTravelDocument.IsChecked == true)
+            {
+                if (string.IsNullOrWhiteSpace(itemName))
+                {
+                    MessageBox.Show("Must enter item name", "Warning");
+                    return;
+                }
+                //Travel document
+                bool required = false;
+                if (xbRequired.IsChecked == true)
+                {
+                    required = true;
+                }
+                TravelDocument travelDocument = new(itemName, required);
+
+                _packingList.Add(travelDocument);
+
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(itemName) || cbQuantity.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Must enter item name and quantity", "Warning");
+                    return;
+                }
+                //Other item
+                int quantity = (int)cbQuantity.SelectedItem;
+                OtherItem otherItem = new(itemName, quantity);
+
+                _packingList.Add(otherItem);
+            }
+
+            UpdatePackingList();
+        }
+
+        private void btnRemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = (ListViewItem)lstPackingList.SelectedItem;
+            PackingListItem selectedPackingListItem = (PackingListItem)selectedItem.Tag;
+            _packingList.Remove(selectedPackingListItem);
+
+            UpdatePackingList();
+
+            btnRemoveItem.IsEnabled = false;
+        }
+
+        private void lstPackingList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isEditing)
+            {
+                btnRemoveItem.IsEnabled = true;
+            }
+        }
+
+        private void xbTravelDocument_Checked(object sender, RoutedEventArgs e)
+        {
+            lblQuantity.Visibility = Visibility.Hidden;
+            cbQuantity.Visibility = Visibility.Hidden;
+
+            //lblRequired.Visibility = Visibility.Visible;
+            xbRequired.Visibility = Visibility.Visible;
+        }
+
+        private void xbTravelDocument_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lblQuantity.Visibility = Visibility.Visible;
+            cbQuantity.Visibility = Visibility.Visible;
+
+            lblRequired.Visibility = Visibility.Hidden;
+            xbRequired.Visibility = Visibility.Hidden;
         }
     }
 }
