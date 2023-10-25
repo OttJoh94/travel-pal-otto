@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using TravelPal.Managers;
 using TravelPal.Models;
 
@@ -11,10 +12,11 @@ namespace TravelPal.Windows
     /// </summary>
     public partial class TravelDetailsWindow : Window
     {
+        private List<PackingListItem> _packingList = new();
         public TravelDetailsWindow()
         {
             InitializeComponent();
-
+            _packingList = TravelManager.SelectedTravel.PackingList;
             cbReason.Items.Add("Work trip");
             cbReason.Items.Add("Vacation");
 
@@ -24,14 +26,38 @@ namespace TravelPal.Windows
             }
 
             UpdateUI();
+            UpdatePackingList();
 
 
+        }
+
+        private void UpdatePackingList()
+        {
+            foreach (PackingListItem item in _packingList)
+            {
+                ListViewItem listViewItem = new();
+                if (item.GetType() == typeof(TravelDocument))
+                {
+                    TravelDocument document = (TravelDocument)item;
+                    listViewItem.Tag = document;
+                    listViewItem.Content = document.GetInfo();
+                }
+                else
+                {
+                    OtherItem otherItem = (OtherItem)item;
+                    listViewItem.Tag = otherItem;
+                    listViewItem.Content = otherItem.GetInfo();
+                }
+                lstPackingList.Items.Add(listViewItem);
+
+            }
         }
 
         private void UpdateUI()
         {
             Travel selectedTravel = TravelManager.SelectedTravel;
 
+            //Fyller i all info från resan.
             txtDestination.Text = selectedTravel.Destination;
             cbTravellers.SelectedItem = selectedTravel.Travellers;
             foreach (Country country in Enum.GetValues(typeof(Country)))
@@ -43,20 +69,6 @@ namespace TravelPal.Windows
             dateEndDate.SelectedDate = selectedTravel.EndDate;
             txtDaysOfTravelling.Text = selectedTravel.TravelDays.ToString();
 
-            foreach (PackingListItem item in selectedTravel.PackingList)
-            {
-                if (item.GetType() == typeof(TravelDocument))
-                {
-                    TravelDocument document = (TravelDocument)item;
-                    lstPackingList.Items.Add(document.GetInfo());
-                }
-                else
-                {
-                    OtherItem otherItem = (OtherItem)item;
-                    lstPackingList.Items.Add(otherItem.GetInfo());
-                }
-
-            }
 
             if (selectedTravel.GetType() == typeof(WorkTrip))
             {
@@ -149,7 +161,7 @@ namespace TravelPal.Windows
             {
                 if ((string)cbReason.SelectedItem == "Work trip")
                 {
-                    //TODO: Något måste göras om sortens resa ändras
+
                     string meetingDetails = txtMeetingDetails.Text;
                     WorkTrip updatedTravel = new(destination, country, travellers, new List<PackingListItem>(), TravelManager.SelectedTravel.User, startDate, endDate, meetingDetails);
                     TravelManager.UpdateTravel(updatedTravel);

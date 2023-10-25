@@ -24,6 +24,14 @@ namespace TravelPal.Windows
         {
             InitializeComponent();
             LoadComboBoxes();
+
+            if (UserManager.SignedInUser.GetType() == typeof(Admin))
+            {
+                lblUser.Visibility = Visibility.Visible;
+                cbUser.Visibility = Visibility.Visible;
+            }
+
+
         }
 
         private void LoadComboBoxes()
@@ -41,6 +49,21 @@ namespace TravelPal.Windows
 
             cbPurpose.Items.Add("Work trip");
             cbPurpose.Items.Add("Vacation");
+
+
+            foreach (IUser user in UserManager.Users)
+            {
+                ComboBoxItem item = new();
+                item.Tag = user;
+                item.Content = user.Username;
+                cbUser.Items.Add(item);
+
+                if (user == UserManager.SignedInUser)
+                {
+                    cbUser.SelectedItem = item;
+                }
+            }
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -123,7 +146,7 @@ namespace TravelPal.Windows
             lblQuantity.Visibility = Visibility.Hidden;
             cbQuantity.Visibility = Visibility.Hidden;
 
-            lblRequired.Visibility = Visibility.Visible;
+            //lblRequired.Visibility = Visibility.Visible;
             xbRequired.Visibility = Visibility.Visible;
         }
 
@@ -177,11 +200,22 @@ namespace TravelPal.Windows
         private void dateStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             startDateSelected = true;
+
+            if (dateEndDate.SelectedDate == null)
+            {
+                dateEndDate.SelectedDate = dateStartDate.SelectedDate;
+            }
         }
 
         private void dateEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             endDateSelected = true;
+
+            if (dateEndDate.SelectedDate < dateStartDate.SelectedDate)
+            {
+                MessageBox.Show("End date must be after start date", "Error");
+                dateEndDate.SelectedDate = dateStartDate.SelectedDate;
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -192,30 +226,7 @@ namespace TravelPal.Windows
             {
                 TurnOffAllWarnings();
                 //Visa var det saknas
-                if (txtDestination.Text == "")
-                {
-                    warnDestination.Visibility = Visibility.Visible;
-                }
-                if (cbCountry.SelectedItem == null)
-                {
-                    warnCountry.Visibility = Visibility.Visible;
-                }
-                if (cbTravellers.SelectedItem == null)
-                {
-                    warnTravellers.Visibility = Visibility.Visible;
-                }
-                if (cbPurpose.SelectedItem == null)
-                {
-                    warnPurpose.Visibility = Visibility.Visible;
-                }
-                if (!startDateSelected)
-                {
-                    warnStartDate.Visibility = Visibility.Visible;
-                }
-                if (!endDateSelected)
-                {
-                    warnEndDate.Visibility = Visibility.Visible;
-                }
+                ShowWarningsWhereNeeded();
                 return;
             }
 
@@ -233,14 +244,18 @@ namespace TravelPal.Windows
                 DateTime startDate = (DateTime)dateStartDate.SelectedDate!;
                 DateTime endDate = (DateTime)dateEndDate.SelectedDate!;
 
+                ComboBoxItem selectedUser = (ComboBoxItem)cbUser.SelectedItem;
+                IUser user = (IUser)selectedUser.Tag;
+
+
                 if (_purpose == "Work trip")
                 {
-                    WorkTrip workTrip = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, meetingDetails);
+                    WorkTrip workTrip = new(destination, country, travellers, _packingList, user, startDate, endDate, meetingDetails);
                     TravelManager.Travels.Add(workTrip);
                 }
                 else if (_purpose == "Vacation")
                 {
-                    Vacation vacation = new(destination, country, travellers, _packingList, UserManager.SignedInUser, startDate, endDate, allInclusive);
+                    Vacation vacation = new(destination, country, travellers, _packingList, user, startDate, endDate, allInclusive);
                     TravelManager.Travels.Add(vacation);
                 }
 
@@ -256,6 +271,34 @@ namespace TravelPal.Windows
 
         }
 
+        private void ShowWarningsWhereNeeded()
+        {
+            if (txtDestination.Text == "")
+            {
+                warnDestination.Visibility = Visibility.Visible;
+            }
+            if (cbCountry.SelectedItem == null)
+            {
+                warnCountry.Visibility = Visibility.Visible;
+            }
+            if (cbTravellers.SelectedItem == null)
+            {
+                warnTravellers.Visibility = Visibility.Visible;
+            }
+            if (cbPurpose.SelectedItem == null)
+            {
+                warnPurpose.Visibility = Visibility.Visible;
+            }
+            if (!startDateSelected)
+            {
+                warnStartDate.Visibility = Visibility.Visible;
+            }
+            if (!endDateSelected)
+            {
+                warnEndDate.Visibility = Visibility.Visible;
+            }
+        }
+
         private void TurnOffAllWarnings()
         {
             warnDestination.Visibility = Visibility.Hidden;
@@ -268,6 +311,11 @@ namespace TravelPal.Windows
 
         private void cbCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            AddPassportToItems();
+        }
+
+        private void AddPassportToItems()
+        {
             //Remove previous passport
             PackingListItem? previousPassport = _packingList.FirstOrDefault(item => item.Name == "Passport");
             if (previousPassport != null)
@@ -275,8 +323,17 @@ namespace TravelPal.Windows
                 _packingList.Remove(previousPassport);
             }
 
+            //Nullcheck
+            if (cbCountry.SelectedItem == null)
+            {
+                return;
+            }
 
-            if (TravelManager.PassportRequired(UserManager.SignedInUser, (Country)cbCountry.SelectedItem))
+            ComboBoxItem selectedUser = (ComboBoxItem)cbUser.SelectedItem;
+            IUser user = (IUser)selectedUser.Tag;
+
+
+            if (TravelManager.PassportRequired(user, (Country)cbCountry.SelectedItem))
             {
                 TravelDocument travelDocument = new("Passport", true);
                 _packingList.Add(travelDocument);
@@ -288,6 +345,11 @@ namespace TravelPal.Windows
             }
 
             UpdatePackListUI();
+        }
+
+        private void cbUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddPassportToItems();
         }
     }
 }
