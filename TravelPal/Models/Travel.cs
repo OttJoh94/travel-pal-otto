@@ -37,11 +37,13 @@ namespace TravelPal.Models
             return dateDiff.Days;
         }
 
+        //Den här metoden används aldrig
         public virtual string GetInfo()
         {
             return $"{Destination}, {Country.ToString()}, {User.Username}, {TravelDays}";
         }
 
+        //Gör objekt för att kunna lägga in det i ListView-kolumner
         public virtual object GetLstInfo()
         {
             return new { Destination = Destination, Country = Country.ToString(), Travel = "placeholder", TravelDays = TravelDays, Username = User.Username };

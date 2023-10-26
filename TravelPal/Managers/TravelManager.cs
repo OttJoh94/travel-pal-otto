@@ -26,7 +26,8 @@ namespace TravelPal.Managers
 
         public static void UpdateTravel(Travel travel)
         {
-            Travel selectedTravel = Travels.Find(travel => travel.Destination == SelectedTravel.Destination);
+            //Hittar rätt objekt. Kommer vara den som selectas när man klickar in på details
+            Travel selectedTravel = Travels.Find(t => t.Destination == SelectedTravel.Destination);
             Travels.Remove(selectedTravel);
             AddTravel(travel);
             SelectedTravel = travel;

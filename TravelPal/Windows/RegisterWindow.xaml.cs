@@ -20,6 +20,7 @@ namespace TravelPal.Windows
             }
         }
 
+        //Byta mellan PasswordBox och TextBox
         private void xbShowPassword_Checked(object sender, RoutedEventArgs e)
         {
             string currentPwPassword = pwPassword.Password.ToString();
@@ -67,16 +68,9 @@ namespace TravelPal.Windows
             try
             {
                 string username = txtUsername.Text;
-                //TODO: Städa denna, finns på flera ställen
-                string password;
-                if (xbShowPassword.IsChecked == true)
-                {
-                    password = txtPassword.Text;
-                }
-                else
-                {
-                    password = pwPassword.Password.ToString();
-                }
+
+                string password = GetPassword();
+
                 Country country = (Country)cbCountry.SelectedItem;
 
                 User newUser = new(username, password, country);
@@ -91,13 +85,10 @@ namespace TravelPal.Windows
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
-        private void EnableRegisterButton()
+        private string GetPassword()
         {
-            string username = txtUsername.Text;
             string password;
             if (xbShowPassword.IsChecked == true)
             {
@@ -107,6 +98,14 @@ namespace TravelPal.Windows
             {
                 password = pwPassword.Password.ToString();
             }
+            return password;
+        }
+
+        private void EnableRegisterButton()
+        {
+            string username = txtUsername.Text;
+            string password = GetPassword();
+
 
 
             //Kollar så att allt är ifyllt korrekt för att kunna klicka på register
@@ -139,15 +138,8 @@ namespace TravelPal.Windows
 
         private void WarnPassword()
         {
-            string password;
-            if (xbShowPassword.IsChecked == true)
-            {
-                password = txtPassword.Text;
-            }
-            else
-            {
-                password = pwPassword.Password.ToString();
-            }
+            string password = GetPassword();
+
 
             if (!UserManager.ValidatePassword(password))
             {

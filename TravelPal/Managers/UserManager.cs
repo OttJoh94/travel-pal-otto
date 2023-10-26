@@ -19,6 +19,8 @@ namespace TravelPal.Managers
             Users.Add(user);
             return true;
         }
+
+        //Ingick inte i uppgiften?
         public static void RemoveUser(IUser user)
         {
 

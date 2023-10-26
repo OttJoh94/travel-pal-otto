@@ -71,10 +71,13 @@ namespace TravelPal
                 DragMove();
             }
         }
+
+        //Gör så minimeringsknappen fungerar
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
+        //Så man kan stänga ner appen med krysset uppe till höger
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
