@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using TravelPal.Models;
 
 namespace TravelPal.Managers
@@ -60,6 +61,16 @@ namespace TravelPal.Managers
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+
+        public static bool TryingToRemovePassport(PackingListItem item)
+        {
+            if (item.Name == "Passport")
+            {
+                MessageBox.Show("You can't remove your passport", "Warning");
+                return true;
             }
             return false;
         }

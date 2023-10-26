@@ -79,7 +79,7 @@
 
 
                     <TextBox Name="txtDestination" Grid.Row="2" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" Margin="0 0 10 0"/>
-                    <ComboBox Name="cbCountry" Grid.Row="3" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" Margin="0 0 10 0"/>
+                    <ComboBox Name="cbCountry" Grid.Row="3" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12" Margin="0 0 10 0" SelectionChanged="cbCountry_SelectionChanged"/>
                     <ComboBox Name="cbTravellers" Grid.Row="4" Grid.Column="2" Height="25" Width="50" VerticalContentAlignment="Center" HorizontalAlignment="Left"  FontSize="12"/>
                     <ComboBox Name="cbReason" Grid.Row="5" Grid.Column="2" Height="25" VerticalContentAlignment="Center"  FontSize="12"  SelectionChanged="cbReason_SelectionChanged" Margin="0 0 10 0"/>
 

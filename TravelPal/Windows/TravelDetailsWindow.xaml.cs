@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -275,6 +276,10 @@ namespace TravelPal.Windows
         {
             ListViewItem selectedItem = (ListViewItem)lstPackingList.SelectedItem;
             PackingListItem selectedPackingListItem = (PackingListItem)selectedItem.Tag;
+            if (TravelManager.TryingToRemovePassport(selectedPackingListItem))
+            {
+                return;
+            }
             _packingList.Remove(selectedPackingListItem);
 
             UpdatePackingList();
@@ -319,6 +324,43 @@ namespace TravelPal.Windows
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Here you can view details about your travel\nPress 'Edit' to unlock the boxes and edit the info\nDon't forget to save!", "Help");
+        }
+
+        private void cbCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddPassportToItems();
+        }
+
+        private void AddPassportToItems()
+        {
+            //Remove previous passport
+            PackingListItem? previousPassport = _packingList.FirstOrDefault(item => item.Name == "Passport");
+            if (previousPassport != null)
+            {
+                _packingList.Remove(previousPassport);
+            }
+
+            //Nullcheck
+            if (cbCountry.SelectedItem == null)
+            {
+                return;
+            }
+
+            IUser user = TravelManager.SelectedTravel.User!;
+
+
+            if (TravelManager.PassportRequired(user, (Country)cbCountry.SelectedItem))
+            {
+                TravelDocument travelDocument = new("Passport", true);
+                _packingList.Add(travelDocument);
+            }
+            else
+            {
+                TravelDocument travelDocument = new("Passport", false);
+                _packingList.Add(travelDocument);
+            }
+
+            UpdatePackingList();
         }
     }
 }

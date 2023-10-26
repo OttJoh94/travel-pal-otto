@@ -191,6 +191,10 @@ namespace TravelPal.Windows
         {
             ListViewItem selectedItem = (ListViewItem)lstPackingList.SelectedItem;
             PackingListItem selectedPackingListItem = (PackingListItem)selectedItem.Tag;
+            if (TravelManager.TryingToRemovePassport(selectedPackingListItem))
+            {
+                return;
+            }
             _packingList.Remove(selectedPackingListItem);
 
             UpdatePackListUI();

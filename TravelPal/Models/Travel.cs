@@ -33,8 +33,8 @@ namespace TravelPal.Models
 
         private int CalculateTravelDays(DateTime startDate, DateTime endDate)
         {
-            int days = endDate.DayOfYear - startDate.DayOfYear;
-            return days;
+            TimeSpan dateDiff = endDate - startDate;
+            return dateDiff.Days;
         }
 
         public virtual string GetInfo()
