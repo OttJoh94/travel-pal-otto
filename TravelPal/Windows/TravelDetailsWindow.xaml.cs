@@ -20,7 +20,12 @@ namespace TravelPal.Windows
         public TravelDetailsWindow()
         {
             InitializeComponent();
-            _packingList = TravelManager.SelectedTravel.PackingList;
+
+            //För att skapa en egen kopia av listan så det inte sparas förrän man klickar save
+            foreach (var item in TravelManager.SelectedTravel.PackingList)
+            {
+                _packingList.Add(item);
+            }
             cbReason.Items.Add("Work trip");
             cbReason.Items.Add("Vacation");
 
@@ -215,7 +220,7 @@ namespace TravelPal.Windows
 
         private void cbReason_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (cbReason.SelectedItem == "Work Trip")
+            if (cbReason.SelectedItem == "Work trip")
             {
                 lblMeetingDetails.Visibility = Visibility.Visible;
                 lblAllInclusive.Visibility = Visibility.Hidden;
