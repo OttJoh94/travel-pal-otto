@@ -70,7 +70,6 @@
                     <TextBlock Grid.Row="4" Grid.Column="1" Text="Travellers" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
                     <TextBlock Grid.Row="5" Grid.Column="1" Text="Purpose" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
 
-                    <TextBlock Name="lblAllInclusive" Grid.Row="6" Grid.Column="1" Text="All inclusive" FontSize="14" VerticalAlignment="Center" Visibility="Hidden" Foreground="White"/>
                     <TextBlock Name="lblMeetingDetails" Grid.Row="6" Grid.Column="1" Text="Meeting details" FontSize="14" VerticalAlignment="Center" Visibility="Hidden" Foreground="White"/>
 
                     <TextBlock Grid.Row="7" Grid.Column="1" Text="Start date" FontSize="14" VerticalAlignment="Center" Foreground="White"/>
@@ -95,7 +94,7 @@
 
                     <TextBlock Grid.Row="7" Grid.Column="3" Text="Item name" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBlock Name="lblQuantity" Grid.Row="7" Grid.Column="4" Text="Quantity" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
-                    <TextBlock Name="lblRequired" Grid.Row="7" Grid.Column="4" Text="Required" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden" Foreground="White"/>
+                    
 
                     <TextBox Name="txtItemName" Grid.Row="8" Grid.Column="3" Height="25" Width="120"/>
                     <ComboBox Name="cbQuantity" Grid.Row="8" Grid.Column="4" Height="25" Width="40"/>

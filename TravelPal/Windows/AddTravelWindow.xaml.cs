@@ -79,6 +79,7 @@ namespace TravelPal.Windows
 
             string itemName = txtItemName.Text;
 
+            //Lägg till TravelDocument
             if (xbTravelDocument.IsChecked == true)
             {
                 if (string.IsNullOrWhiteSpace(itemName))
@@ -99,6 +100,7 @@ namespace TravelPal.Windows
             }
             else
             {
+                //Lägg till OtherItem
                 if (string.IsNullOrWhiteSpace(itemName) || cbQuantity.SelectedIndex == -1)
                 {
                     MessageBox.Show("Must enter item name and quantity", "Warning");
@@ -118,16 +120,11 @@ namespace TravelPal.Windows
         {
             lstPackingList.Items.Clear();
 
-            txtItemName.Text = "";
-            cbQuantity.SelectedIndex = -1;
-
-
-
-
             foreach (var item in _packingList)
             {
                 ListViewItem lstItem = new();
                 lstItem.Tag = item;
+                //Komma åt rätt GetInfo
                 if (item.GetType() == typeof(TravelDocument))
                 {
                     TravelDocument travelDocument = (TravelDocument)item;
@@ -140,6 +137,11 @@ namespace TravelPal.Windows
                 }
                 lstPackingList.Items.Add(lstItem);
             }
+
+            txtItemName.Text = "";
+            xbTravelDocument.IsChecked = false;
+            cbQuantity.SelectedIndex = -1;
+
         }
 
         private void xbTravelDocument_Checked(object sender, RoutedEventArgs e)
@@ -147,7 +149,8 @@ namespace TravelPal.Windows
             lblQuantity.Visibility = Visibility.Hidden;
             cbQuantity.Visibility = Visibility.Hidden;
 
-            //lblRequired.Visibility = Visibility.Visible;
+
+
             xbRequired.Visibility = Visibility.Visible;
         }
 
@@ -156,7 +159,6 @@ namespace TravelPal.Windows
             lblQuantity.Visibility = Visibility.Visible;
             cbQuantity.Visibility = Visibility.Visible;
 
-            lblRequired.Visibility = Visibility.Hidden;
             xbRequired.Visibility = Visibility.Hidden;
         }
 
@@ -168,7 +170,6 @@ namespace TravelPal.Windows
                 lblMeetingDetails.Visibility = Visibility.Visible;
                 txtMeetingDetails.Visibility = Visibility.Visible;
 
-                lblAllInclusive.Visibility = Visibility.Hidden;
                 xbAllinclusive.Visibility = Visibility.Hidden;
             }
             else if ((string)cbPurpose.SelectedItem == "Vacation")
@@ -177,7 +178,7 @@ namespace TravelPal.Windows
                 lblMeetingDetails.Visibility = Visibility.Hidden;
                 txtMeetingDetails.Visibility = Visibility.Hidden;
 
-                //lblAllInclusive.Visibility = Visibility.Visible;
+
                 xbAllinclusive.Visibility = Visibility.Visible;
             }
         }
@@ -191,6 +192,7 @@ namespace TravelPal.Windows
         {
             ListViewItem selectedItem = (ListViewItem)lstPackingList.SelectedItem;
             PackingListItem selectedPackingListItem = (PackingListItem)selectedItem.Tag;
+            //Kollar om itemet man försöker ta bort är en passport
             if (TravelManager.TryingToRemovePassport(selectedPackingListItem))
             {
                 return;
@@ -249,6 +251,7 @@ namespace TravelPal.Windows
                 DateTime startDate = (DateTime)dateStartDate.SelectedDate!;
                 DateTime endDate = (DateTime)dateEndDate.SelectedDate!;
 
+                //Hämta rätt user, endast Admin som kan ändra. Annars är det alltid selectedUser som förvalt
                 ComboBoxItem selectedUser = (ComboBoxItem)cbUser.SelectedItem;
                 IUser user = (IUser)selectedUser.Tag;
 

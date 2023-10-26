@@ -75,7 +75,6 @@
                     <TextBlock Grid.Row="4" Grid.Column="1" Text="Purpose" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBlock Name="lblUser" Grid.Row="4" Grid.Column="3" Text="User" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Collapsed" Foreground="White"/>
                     <TextBlock Name="lblMeetingDetails" Grid.Row="4" Grid.Column="2" Text="Meeting details" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden" Foreground="White"/>
-                    <TextBlock Name="lblAllInclusive" Grid.Row="4" Grid.Column="2" Text="All inclusive" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden" Foreground="White"/>
 
                     <ComboBox Name="cbPurpose" Grid.Row="5" Grid.Column="1" Height="25" Width="120" SelectionChanged="cbPurpose_SelectionChanged"/>
                     <TextBox Name="txtMeetingDetails" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="25" Width="180" HorizontalAlignment="Left" Margin="18 0 0 0" Visibility="Hidden"/>
@@ -87,7 +86,6 @@
                     <TextBlock Grid.Row="6" Grid.Column="2" Text="End date" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBlock Grid.Row="6" Grid.Column="4" Text="Item name" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
                     <TextBlock Name="lblQuantity" Grid.Row="6" Grid.Column="5" Text="Quantity" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Foreground="White"/>
-                    <TextBlock Name="lblRequired" Grid.Row="6" Grid.Column="5" Text="Required" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" FontSize="14" Visibility="Hidden" Foreground="White"/>
 
                     <DatePicker Name="dateStartDate" Grid.Row="7" Grid.Column="1" Height="25" Width="120" SelectedDateChanged="dateStartDate_SelectedDateChanged"/>
                     <DatePicker Name="dateEndDate" Grid.Row="7" Grid.Column="2" Height="25" Width="120" SelectedDateChanged="dateEndDate_SelectedDateChanged"/>

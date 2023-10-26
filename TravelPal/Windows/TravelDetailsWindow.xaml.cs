@@ -26,6 +26,7 @@ namespace TravelPal.Windows
             {
                 _packingList.Add(item);
             }
+
             cbReason.Items.Add("Work trip");
             cbReason.Items.Add("Vacation");
 
@@ -64,6 +65,10 @@ namespace TravelPal.Windows
                 lstPackingList.Items.Add(listViewItem);
 
             }
+
+            txtItemName.Text = "";
+            xbTravelDocument.IsChecked = false;
+            cbQuantity.SelectedIndex = -1;
         }
 
         private void UpdateUI()
@@ -96,30 +101,14 @@ namespace TravelPal.Windows
             else
             {
                 Vacation vacation = (Vacation)selectedTravel;
-                //Välj vacation i cbReason
                 //Enable AllInclusive
                 cbReason.SelectedItem = "Vacation";
-                lblAllInclusive.Visibility = Visibility.Visible;
                 xbAllInclusive.Visibility = Visibility.Visible;
                 if (vacation.AllInclusive)
                 {
                     xbAllInclusive.IsChecked = true;
                 }
             }
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            TravelsWindow travelsWindow = new();
-            travelsWindow.Show();
-            Close();
-        }
-
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-            TurnOnUI();
-
         }
 
         private void TurnOnUI()
@@ -165,6 +154,20 @@ namespace TravelPal.Windows
             xbTravelDocument.IsEnabled = false;
 
             _isEditing = false;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            TravelsWindow travelsWindow = new();
+            travelsWindow.Show();
+            Close();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+            TurnOnUI();
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -223,7 +226,6 @@ namespace TravelPal.Windows
             if (cbReason.SelectedItem == "Work trip")
             {
                 lblMeetingDetails.Visibility = Visibility.Visible;
-                lblAllInclusive.Visibility = Visibility.Hidden;
 
                 txtMeetingDetails.Visibility = Visibility.Visible;
                 xbAllInclusive.Visibility = Visibility.Hidden;
@@ -231,7 +233,6 @@ namespace TravelPal.Windows
             else if (cbReason.SelectedItem == "Vacation")
             {
                 lblMeetingDetails.Visibility = Visibility.Hidden;
-                lblAllInclusive.Visibility = Visibility.Visible;
 
                 txtMeetingDetails.Visibility = Visibility.Hidden;
                 xbAllInclusive.Visibility = Visibility.Visible;
@@ -281,6 +282,7 @@ namespace TravelPal.Windows
         {
             ListViewItem selectedItem = (ListViewItem)lstPackingList.SelectedItem;
             PackingListItem selectedPackingListItem = (PackingListItem)selectedItem.Tag;
+
             if (TravelManager.TryingToRemovePassport(selectedPackingListItem))
             {
                 return;
@@ -288,7 +290,6 @@ namespace TravelPal.Windows
             _packingList.Remove(selectedPackingListItem);
 
             UpdatePackingList();
-
             btnRemoveItem.IsEnabled = false;
         }
 
@@ -305,7 +306,6 @@ namespace TravelPal.Windows
             lblQuantity.Visibility = Visibility.Hidden;
             cbQuantity.Visibility = Visibility.Hidden;
 
-            //lblRequired.Visibility = Visibility.Visible;
             xbRequired.Visibility = Visibility.Visible;
         }
 
@@ -314,16 +314,7 @@ namespace TravelPal.Windows
             lblQuantity.Visibility = Visibility.Visible;
             cbQuantity.Visibility = Visibility.Visible;
 
-            lblRequired.Visibility = Visibility.Hidden;
             xbRequired.Visibility = Visibility.Hidden;
-        }
-
-        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
@@ -366,6 +357,13 @@ namespace TravelPal.Windows
             }
 
             UpdatePackingList();
+        }
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }
