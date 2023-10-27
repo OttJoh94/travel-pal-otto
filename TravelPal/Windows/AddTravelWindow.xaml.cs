@@ -124,17 +124,7 @@ namespace TravelPal.Windows
             {
                 ListViewItem lstItem = new();
                 lstItem.Tag = item;
-                //Komma åt rätt GetInfo
-                if (item.GetType() == typeof(TravelDocument))
-                {
-                    TravelDocument travelDocument = (TravelDocument)item;
-                    lstItem.Content = travelDocument.GetInfo();
-                }
-                else
-                {
-                    OtherItem otherItem = (OtherItem)item;
-                    lstItem.Content = otherItem.GetInfo();
-                }
+                lstItem.Content = item.GetInfo();
                 lstPackingList.Items.Add(lstItem);
             }
 

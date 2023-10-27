@@ -50,18 +50,9 @@ namespace TravelPal.Windows
             foreach (PackingListItem item in _packingList)
             {
                 ListViewItem listViewItem = new();
-                if (item.GetType() == typeof(TravelDocument))
-                {
-                    TravelDocument document = (TravelDocument)item;
-                    listViewItem.Tag = document;
-                    listViewItem.Content = document.GetInfo();
-                }
-                else
-                {
-                    OtherItem otherItem = (OtherItem)item;
-                    listViewItem.Tag = otherItem;
-                    listViewItem.Content = otherItem.GetInfo();
-                }
+                listViewItem.Tag = item;
+                listViewItem.Content = item.GetInfo();
+
                 lstPackingList.Items.Add(listViewItem);
 
             }

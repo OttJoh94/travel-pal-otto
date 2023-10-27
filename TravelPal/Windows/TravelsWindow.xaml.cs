@@ -34,21 +34,8 @@ namespace TravelPal.Windows
 
                 foreach (Travel travel in TravelManager.Travels)
                 {
-                    ListViewItem item = new();
-                    if (travel.GetType() == typeof(WorkTrip))
-                    {
-                        WorkTrip workTrip = (WorkTrip)travel;
-                        item.Content = workTrip.GetLstInfo();
-                        item.Tag = workTrip;
-                        lstAdminTravels.Items.Add(item);
-                    }
-                    else
-                    {
-                        Vacation vacation = (Vacation)travel;
-                        item.Content = vacation.GetLstInfo();
-                        item.Tag = vacation;
-                        lstAdminTravels.Items.Add(item);
-                    }
+                    AddToListView(travel, lstAdminTravels);
+
                 }
 
                 btnUserInfo.IsEnabled = false;
@@ -71,23 +58,8 @@ namespace TravelPal.Windows
                 //Lägger till i ListView
                 foreach (Travel travel in myTravels)
                 {
-                    ListViewItem item = new();
-                    if (travel.GetType() == typeof(WorkTrip))
-                    {
-                        WorkTrip workTrip = (WorkTrip)travel;
-                        item.Content = workTrip.GetLstInfo();
-                        item.Tag = workTrip;
-                        lstUserTravels.Items.Add(item);
-                    }
-                    else
-                    {
-                        Vacation vacation = (Vacation)travel;
-                        item.Content = vacation.GetLstInfo();
-                        item.Tag = vacation;
-                        lstUserTravels.Items.Add(item);
-                    }
+                    AddToListView(travel, lstUserTravels);
                 }
-
             }
 
         }
@@ -169,6 +141,25 @@ namespace TravelPal.Windows
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
+            }
+        }
+
+        private void AddToListView(Travel travel, ListView listview)
+        {
+            ListViewItem item = new();
+            if (travel.GetType() == typeof(WorkTrip))
+            {
+                WorkTrip workTrip = (WorkTrip)travel;
+                item.Content = workTrip.GetLstInfo();
+                item.Tag = workTrip;
+                listview.Items.Add(item);
+            }
+            else
+            {
+                Vacation vacation = (Vacation)travel;
+                item.Content = vacation.GetLstInfo();
+                item.Tag = vacation;
+                listview.Items.Add(item);
             }
         }
     }
