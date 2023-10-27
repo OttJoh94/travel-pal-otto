@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Windows"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="250" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
+        Title="RegisterWindow" Height="400" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"  Background="Transparent" AllowsTransparency="True">
     <Border CornerRadius="22">
         <Border.Background>
             <SolidColorBrush Color="Black"/>
